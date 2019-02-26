@@ -1,0 +1,77 @@
+ /* Animaciones */
+ .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
+}
+
+body {
+    background-color: #dfdddd;
+}
+
+
+#calendar {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.fc-popover {
+  z-index: 3;
+}
+
+.breadcrumb {
+  background-color: white;
+}
+
+a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
+  background-color: #08B2CB !important;
+}
+
+.btn-primary {
+  background-color: #08B2CB !important;
+  border-color: #08B2CB !important;
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+  background-color: #AAE5ED !important;
+  border-color: #AAE5ED !important;
+}
+
+a, a:hover {
+  color: #08B2CB;
+}
+
+.fc-content > .fc-title {
+  display:none;
+}
+
+.fc-content {
+  text-align: center;
+}
+
+.fc-event-container {
+  cursor: pointer;
+}
