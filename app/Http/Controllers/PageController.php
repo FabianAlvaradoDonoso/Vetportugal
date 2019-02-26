@@ -25,6 +25,17 @@ class PageController extends Controller
         return view('pagesystem.system.onepage.contact');
     }
 
+    public function autoadm()
+    {
+        return view('pagesystem.welcome');
+    }
+
+    public function dash()
+    {
+        return view('pagesystem.dashboard');
+    }
+
+
 
 
 

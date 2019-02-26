@@ -222,15 +222,35 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
-        <li class="header">MODIFICACIONES</li>
+        <li class="header">PÁGINA PRINCIPAL</li>
         <li>
-            <a href={{route('category.index')}}>
-                <i class="fa fa-tags"></i> <span>Categorías</span>
+            <a href="">
+                <i class="fa fa-tags"></i> <span>Sucursales</span>
             </a>
         </li>
         <li>
-            <a href={{route('product.index')}}>
-                <i class="fa fa-archive"></i> <span>Productos</span>
+            <a href="">
+                <i class="fa fa-archive"></i> <span>Carousel</span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="fa fa-archive"></i> <span>Doctores</span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="fa fa-archive"></i> <span>Services</span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="fa fa-archive"></i> <span>RRSS</span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <i class="fa fa-archive"></i> <span>Especialidades</span>
             </a>
         </li>
         <li class="header">OTROS</li>

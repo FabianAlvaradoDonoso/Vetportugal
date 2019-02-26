@@ -66,7 +66,10 @@ Route::get('/', 'PageController@inicio')->name('index');
 Route::get('/scheduled', 'PageController@schedule')->name('schedule');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contact')->name('contact');
+Route::get('/autoadm', 'PageController@autoadm')->name('autoadm');
 
+// Ruta Dashboard
+Route::get('/dash','PageController@dash')->name('dash');
 
 
 
