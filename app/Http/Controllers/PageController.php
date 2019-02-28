@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Vet;
 use App\Doc;
 use App\Carousel;
+use App\Sucursal;
 
 class PageController extends Controller
 {
@@ -13,8 +14,10 @@ class PageController extends Controller
     {
         $Docs = Doc::all();
         $Carousels = Carousel::all();
-        return view('pagesystem.system.onepage.index', compact('Docs','Carousels'));
+        $Sucursals = Sucursal::all();
+        return view('pagesystem.system.onepage.index', compact('Docs','Carousels','Sucursals'));
     }
+  
     public function schedule()
     {
         return view('pagesystem.system.onepage.schedule');
