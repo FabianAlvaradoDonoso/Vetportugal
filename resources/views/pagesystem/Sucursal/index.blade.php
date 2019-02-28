@@ -74,7 +74,7 @@
                                         <li class="divider"></li>
                                     </ul>
                                  
-                                    <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Sucursal.edit',$Sucursal->slug)}}"><i class="glyphicon glyphicon-list"></i>Editar</a></p>
+                                    <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Sucursal.edit',$Sucursal->slug)}}">Editar</a></p>
                                             {!! Form::open([ 'route' => ['Sucursal.destroy', $Sucursal->slug], 'method'=>'DELETE'])!!}
                                                 {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm'])!!}
                                             {!! Form::close()!!}

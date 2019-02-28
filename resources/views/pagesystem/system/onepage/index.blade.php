@@ -92,7 +92,38 @@
         </aside>
 
         <div id="colorlib-services">
-            {{-- @extends('system.onepage.service') --}}
+            <div class="container">
+                    <div class="row">
+                
+                        @foreach ($Services as $Service)
+                        <div class="col-md-4">
+                            <div class="department-wrap animate-box">
+                            <div class="grid-1 col-md-6" style="background-image: url(vetportugal/images/{{$Service->imagen}});"></div>
+                                <div class="grid-2 col-md-6">
+                                    <div class="desc">
+                                        <h2><a href="departments-single.html">{{$Service->name}}</a></h2>
+                                        <p>{{$Service->description}}</p>
+                                        <div class="department-info">
+                                            <div class="block">
+                                                <h2><a href="doctors-single.html">Paul Merriweather</a></h2>
+                                                <span>{{$Service->price}}</span>
+                                            </div>
+                                            <div class="block">
+                                                <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Service.edit', $Service->slug)}}">Editar</a></p>
+                                                {!! Form::open([ 'route' => ['Service.destroy', $Service->slug], 'method'=>'DELETE'])!!}
+                                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm'])!!}
+                                            {!! Form::close()!!}
+                                            </div>                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            
+                        @endforeach
+                                
+                     </div> 
+            </div>  
         </div>
         <div id="colorlib-doctor" class="colorlib-bg-section">
                 <div class="container">

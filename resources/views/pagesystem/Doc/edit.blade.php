@@ -64,13 +64,13 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Especialidad</label>
                                     <div class="col-md-8 inputGroupContainer">
-                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span><input id="specialty" name="specialty" value="{{$Doc->specialty}}" class="form-control" required="true" value="" type="text"></div>
+                                    <div class="input-group"><span class="input-group-addon"></span><input id="specialty" name="specialty" value="{{$Doc->specialty}}" class="form-control" required="true" value="" type="text"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Descripción</label>
                                     <div class="col-md-8 inputGroupContainer">
-                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span><input id="description" name="description" value="{{$Doc->description}}" class="form-control" required="true" value="" type="text"></div>
+                                    <div class="input-group"><span class="input-group-addon"></span><input id="description" name="description" value="{{$Doc->description}}" class="form-control" required="true" value="" type="text"></div>
                                     </div>
                                 </div>
                                 

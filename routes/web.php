@@ -88,3 +88,4 @@ Route::resource('appointments', 'AppointmentController');
 Route::resource('Docs', 'DocController');
 Route::resource('Carousel', 'CarouselController');
 Route::resource('Sucursal', 'SucursalController');
+Route::resource('Service', 'ServiceController');

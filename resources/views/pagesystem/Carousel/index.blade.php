@@ -60,7 +60,7 @@
                                             <h1>{{$Carousel->name}}</h1>
                                              <h2>{{$Carousel->subtitle}}</h2>
                                              <p><a class="btn btn-primary btn-lg btn-learn" href="{{$Carousel->linkbtn}}">{{$Carousel->btntitle}}</a></p>
-                                             <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Carousel.edit',$Carousel->slug)}}"><i class="glyphicon glyphicon-list"></i>Editar</a></p>
+                                             <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Carousel.edit',$Carousel->slug)}}">Editar</a></p>
                                              {!! Form::open([ 'route' => ['Carousel.destroy', $Carousel->slug], 'method'=>'DELETE'])!!}
                                                 {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm'])!!}
                                             {!! Form::close()!!}

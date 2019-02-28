@@ -7,6 +7,7 @@ use App\Vet;
 use App\Doc;
 use App\Carousel;
 use App\Sucursal;
+use App\Service;
 
 class PageController extends Controller
 {
@@ -15,7 +16,8 @@ class PageController extends Controller
         $Docs = Doc::all();
         $Carousels = Carousel::all();
         $Sucursals = Sucursal::all();
-        return view('pagesystem.system.onepage.index', compact('Docs','Carousels','Sucursals'));
+        $Services = Service::all();
+        return view('pagesystem.system.onepage.index', compact('Docs','Carousels','Sucursals','Services'));
     }
   
     public function schedule()

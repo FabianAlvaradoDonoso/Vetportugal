@@ -218,13 +218,13 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU DE NAVEGACION</li>
         <li>
-            <a href={{url('/dash')}}>
+            <a href="{{url('/dash')}}"">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
         <li class="header">PÁGINA PRINCIPAL</li>
         <li>
-            <a href="">
+            <a href="{{url('/Sucursal')}}">
                 <i class="fa fa-tags"></i> <span>Sucursales</span>
             </a>
         </li>
@@ -239,7 +239,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url('/Service')}}">
                 <i class="fa fa-archive"></i> <span>Services</span>
             </a>
         </li>

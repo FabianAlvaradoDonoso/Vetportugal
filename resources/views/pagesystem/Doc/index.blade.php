@@ -54,7 +54,7 @@
 								<div class="desc">
 									<span>{{$Doc->specialty}}</span>
 									<h3><a href="#">Dr. {{$Doc->name}}</a></h3>
-                                    <a href="{{route('Docs.edit', $Doc->slug)}}" class="btn btn-success btn-block"><i class="glyphicon glyphicon-list"></i> Editar</a>
+                                    <a href="{{route('Docs.edit', $Doc->slug)}}" class="btn btn-success btn-block"> Editar</a>
                                         <form class="" action="{{route('Docs.destroy', $Doc->slug)}}" method="post">
                                             @csrf
                                             {{method_field('DELETE')}}
