@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Vet;
 use App\Date;
 use App\Time;
+use App\User;
+use DateTime;
+use App\DateTime as DatetimeModel;
 use App\State;
-use App\Vet;
 use App\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use DateTime;
 
 class AppointmentController extends Controller
 {
@@ -20,7 +22,44 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('calendario.appointments.index');
+        $states = State::all();
+        $aux = Appointment::with('vet', 'state', 'dateTimes')->get();
+  
+        $date = Date::findOrFail($aux[0]['dateTimes']->date_id)->date;
+        $time = Time::findOrFail($aux[0]['dateTimes']->time_id)->time;
+        $dateTime = new DateTime($date . " " . $time);
+        $appointments = array();
+        foreach ($aux as $key => $value) {
+
+            $vet = $value['vet']['user_id'];
+            $usr = User::where('id', $vet)->first();
+            $appointments[$key]['title'] = 'Dr. ' . $usr['name'] . ' ' . $usr['last_name'];
+            $appointments[$key]['id'] = $value['id'];
+
+            $date = Date::findOrFail($value['dateTimes']->date_id)->date;
+            $time = Time::findOrFail($value['dateTimes']->time_id)->time;
+            $dateTime = new DateTime($date . " " . $time);
+
+            $appointments[$key]['start'] = $dateTime->format('Y-m-d H:i:s');
+
+            if($value['state']->state === 'disponible') {
+
+                $appointments[$key]['color'] = '#cccc'; //tono gris
+                $appointments[$key]['textColor'] = 'black';
+            }
+            elseif ($value['state']->state === 'reservado') {
+
+                $appointments[$key]['color'] = '#17a2b8'; //Color institucional
+                $appointments[$key]['textColor'] = 'white';
+            }
+            elseif ($value['state']->state === 'confirmado') {
+
+                $appointments[$key]['color'] = 'green';
+                $appointments[$key]['textColor'] = 'white';
+            }
+        }
+
+        return view('calendario.appointments.calendar', compact('appointments', 'states'));
     }
 
     /**
@@ -97,47 +136,64 @@ class AppointmentController extends Controller
         //
     }
 
-    public function calendar() {
+    public function gestionHoras() {
+        $vets = Vet::with('user')->get();
+        $veterinaries = array();
+        foreach ($vets as $key => $vet) {
+            $veterinaries[$key]['id'] = $vet->id;
+            $veterinaries[$key]['name'] = $vet->user->name . ' ' . $vet->user->last_name;
+        }
+        return view('calendario.appointments.gestionHoras', compact('veterinaries'));
+    }
 
-        $states = State::all();
-        $aux = Appointment::with('vet', 'state', 'dateTimes')->get();
-        // return Date::findOrFail($aux[0]['dateTimes']->date_id);
-        // return Time::findOrFail($aux[0]['dateTimes']->time_id);
+    public function getApptsByVet($vet) {
+        $appts = Appointment::with('dateTimes', 'state')->where('vet_id', $vet)->get();
+        $events = array();
+        foreach ($appts as $key => $appt) {
+            $dateId = $appt->dateTimes->date_id;
+            $timeId = $appt->dateTimes->time_id;
+            $fecha = Date::findOrFail($dateId)->date;
+            $hora = Time::findOrFail($timeId)->time;
+            $events[$key]['id'] = $appt->id;
+            $events[$key]['start'] = $fecha . ' ' . $hora;
+            
+            if($appt['state']->state === 'disponible') {
 
-        $date = Date::findOrFail($aux[0]['dateTimes']->date_id)->date;
-        $time = Time::findOrFail($aux[0]['dateTimes']->time_id)->time;
-        $dateTime = new DateTime($date . " " . $time);
-
-        $appointments = array();
-        foreach ($aux as $key => $value) {
-            $appointments[$key]['title'] = $value['name'];
-            $appointments[$key]['id'] = $value['id'];
-
-            $date = Date::findOrFail($value['dateTimes']->date_id)->date;
-            $time = Time::findOrFail($value['dateTimes']->time_id)->time;
-            $dateTime = new DateTime($date . " " . $time);
-
-            $appointments[$key]['start'] = $dateTime->format('Y-m-d H:i:s');
-
-            if($value['state']->state === 'disponible') {
-
-                $appointments[$key]['color'] = '#cccc'; //tono gris
-                $appointments[$key]['textColor'] = 'black';
-
+                $events[$key]['color'] = '#cccc'; //tono gris
+                $events[$key]['textColor'] = 'black';
             }
-            elseif ($value['state']->state === 'reservado') {
+            elseif ($appt['state']->state === 'reservado') {
 
-                $appointments[$key]['color'] = '#17a2b8'; //Color institucional
-                $appointments[$key]['textColor'] = 'white';
-
+                $events[$key]['color'] = '#17a2b8'; //Color institucional
+                $events[$key]['textColor'] = 'white';
             }
-            elseif ($value['state']->state === 'confirmado') {
+            elseif ($appt['state']->state === 'confirmado') {
 
-                $appointments[$key]['color'] = 'green';
-                $appointments[$key]['textColor'] = 'white';
-
+                $events[$key]['color'] = 'green';
+                $events[$key]['textColor'] = 'white';
             }
         }
-        return view('calendario.appointments.calendar', compact('appointments', 'states'));
+
+        return $events;
+    }
+
+    public function addAppointmentsByVet($vet, $fecha, $hora) {
+        
+        $date_id = Date::firstOrCreate(['date' => $fecha])->where('date', $fecha)->first()->id;
+        $time_id = Time::firstOrCreate(['time' => $hora])->where('time', $hora)->first()->id;
+        $date_time_id = DatetimeModel::firstOrCreate(['date_id' => $date_id, 'time_id' => $time_id])->where('date_id', $date_id)->where('time_id', $time_id)->first()->id;
+
+        $checking = Appointment::where("vet_id", $vet)->where("state_id", 3)->where("date_times_id", $date_time_id)->get();
+
+        if($checking != null) {
+            return 201; //Ya existe esta búsqueda en la base de datos
+        }
+        else {
+            Appointment::create(["vet_id" => $vet, "state_id" => 3, "date_times_id" => $date_time_id]);
+            return 200;
+        }
+        
+
+
     }
 }

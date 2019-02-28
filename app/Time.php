@@ -11,4 +11,7 @@ class Time extends Model
     {
         return $this->hasMany(DateTime::class);
     }
+    protected $fillable = [
+        'time'
+    ];
 }

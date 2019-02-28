@@ -26,6 +26,6 @@ class Appointment extends Model
     }
 
     protected $fillable = [
-        'name', 'phone', 'state_id'
+        'name', 'phone', 'state_id', 'vet_id', 'date_times_id'
     ];
 }

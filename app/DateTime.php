@@ -24,4 +24,8 @@ class DateTime extends Model
         return $this->hasMany(Appointment::class);
     }
 
+    protected $fillable = [
+        'date_id', 'time_id'
+    ];
+
 }

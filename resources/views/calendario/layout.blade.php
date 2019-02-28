@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Appointments</title>
+    <title>Agenda VetPortugal</title>
     {{--BootstrapCSS--}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     {{--Fontawesome--}}
@@ -17,12 +17,6 @@
     {{-- Versión para imprimir? --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css"> --}}
 
-    <style>
-        .fc-header-toolbar {
-            text-transform: capitalize
-        }
-    </style>
-
 </head>
 <body style="display: none" class="animated fadeIn">
     <div class="d-flex toggled" id="wrapper">
@@ -31,7 +25,7 @@
           <div class="sidebar-heading text-white text-center">VetPortugapp</div>
           <div class="list-group list-group-flush">
             <a href="{{ route('appointments.index') }}" class="list-group-item list-group-item-action bg-dark text-white">Inicio</a>
-            <a href="{{ route('appointments.calendar') }}" class="list-group-item list-group-item-action bg-dark text-white">Calendario</a>
+            <a href=" {{ route('appointments.gestionHoras')}} " class="list-group-item list-group-item-action bg-dark text-white">Gestión de Horas</a>
           </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -40,7 +34,7 @@
         <div id="page-content-wrapper">
 
           <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-            <button class="btn btn-primary" id="menu-toggle"></button>
+            <button class="btn btn-primary" id="menu-toggle"><i class="fas fa-angle-double-right"></i></button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -61,13 +55,8 @@
                 </li>
               </ul>
             </div>
-          </nav>
-          <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              </ol>
-          </nav>
-          <div class="container">
+          </nav>  
+          <div class="container mt-5">
               @yield('content')
           </div>
         </div>

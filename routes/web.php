@@ -72,11 +72,14 @@ Route::get('/contact', 'PageController@contact')->name('contact');
 
 //Sistema de reserva de horas
 
+// Route::get('/appoint', 'AppointmentController@calendar');
 
-Route::get('/appoint', 'AppointmentController@calendar');
 
-Route::get('/appointments/calendar', 'AppointmentController@calendar')->name('appointments.calendar');
-
+Route::get('/appointments/horas', 'AppointmentController@gestionHoras')->name('appointments.gestionHoras');
+Route::get('/appointments', 'AppointmentController@index')->name('appointments.calendar');
+Route::get('/appointments/getApptsByVet/{vet}', 'AppointmentController@getApptsByVet');
+Route::get('/appointments/addAppointmentsByVet/{vet}/{fecha}/{hora}', 'AppointmentController@addAppointmentsByVet');
 Route::resource('appointments', 'AppointmentController');
+
 
 

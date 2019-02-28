@@ -12,14 +12,14 @@
 
           {{ method_field('PUT') }}
 
-          <div class="form-group">
+          <div class="form-group" hidden>
             <label for="id">ID:</label>
-            <input type="text" name="id" id="id" class="form-control" hidden>
+            <input type="text" name="id" id="id" class="form-control">
             <small class="text-muted">ID de la cita médica</small>
           </div>
 
           <div class="form-group">
-            <label for="name">Nombre:</label>
+            <label for="name">Hora reservada por:</label>
             <input type="text" name="name" id="name" class="form-control">
             <small class="text-muted">Nombre de quien solicita la hora</small>
           </div>
