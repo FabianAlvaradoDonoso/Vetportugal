@@ -86,4 +86,4 @@ Route::resource('appointments', 'AppointmentController');
 //Sistema AUTOADM
 
 Route::resource('Docs', 'DocController');
-
+Route::resource('Carousel', 'CarouselController');

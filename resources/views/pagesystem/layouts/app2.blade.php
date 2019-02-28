@@ -229,12 +229,12 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url('/Carousel')}}">
                 <i class="fa fa-archive"></i> <span>Carousel</span>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url('/Docs')}}">
                 <i class="fa fa-archive"></i> <span>Doctores</span>
             </a>
         </li>

@@ -87,44 +87,70 @@
         <div id="colorlib-services">
             {{-- @extends('system.onepage.service') --}}
         </div>
-
-
-
         <div id="colorlib-doctor" class="colorlib-bg-section">
-            <div class="container">
-                            <div class="row animate-box">
-                                    <div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-                                        <h2>Contamos con Doctores Especialistas</h2>
-                                    </div>
-                            </div><!--animate box-->
-                            <div class="row">
-                                <div class="col-md-12 animate-box">
-                                    <div class="owl-carousel">
+                <div class="container">
+                                <div class="row animate-box">
+                                        <div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+                                            <h2>Contamos con Doctores Especialistas</h2>
+                                        </div>
+                                </div><!--animate box-->
+                                <div class="row">
+                                    <div class="col-md-12 animate-box">
+                                        <div class="owl-carousel">
+    
+                                                <div class="item">
+                                                    @foreach ($Docs as $Doc)
+                                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                <div class="doctor">
+                                                                    <div class="staff-img" style="background-image: url(vetportugal/images/{{$Doc->image}});"></div>
+                                                                    <div class="desc">
+                                                                        <span>{{$Doc->specialty}}</span>
+                                                                        <h3><a href="#">Dr. {{$Doc->name}}</a></h3>
+                                                                        <ul>
+                                                                            <p> {{$Doc->description}}</p>
+                                                                        </ul>
+                                                                        <ul>
+                                                                            <p><a class="btn btn-primary btn-md btn-block" href="#">Reservar	</a></p>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                        </div><!--col doctor-->                                                        
+                                                    @endforeach
+                                                         
+                                                        
+                                                </div><!--item-->
+                                                <div class="item">
+                                                        @foreach ($Docs as $Doc)
+                                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                                    <div class="doctor">
+                                                                        <div class="staff-img" style="background-image: url(vetportugal/images/{{$Doc->image}});"></div>
+                                                                        <div class="desc">
+                                                                            <span>{{$Doc->specialty}}</span>
+                                                                            <h3><a href="#">Dr. {{$Doc->name}}</a></h3>
+                                                                            <ul>
+                                                                                <p> {{$Doc->description}}</p>
+                                                                            </ul>
+                                                                            <ul>
+                                                                                <p><a class="btn btn-primary btn-md btn-block" href="#">Reservar	</a></p>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                            </div><!--col doctor-->                                                        
+                                                        @endforeach
+                                                             
+                                                            
+                                                    </div><!--item-->
+    
+                                           
+                                        
+                                        </div> <!--carousel-->
+                                    </div> <!--animate box-->
+                                </div> <!--row-->
+                </div> <!--container-->
+            </div> <!--colorlib-doctor-->   
 
-                                            <div class="item">
-                                                @foreach ($Docs as $Doc)
-                                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                                    <div class="doctor">
-                                                        <div class="staff-img" style="background-image: url(vetportugal/images/{{$Doc->image}});"></div>
-                                                        <div class="desc">
-                                                            <span>{{$Doc->specialty}}</span>
-                                                            <h3><a href="#">Dr. {{$Doc->name}}</a></h3>
-                                                            <ul>
-                                                                <p> {{$Doc->description}}</p>
-                                                            </ul>
-                                                            <ul>
-                                                                <p><a class="btn btn-primary btn-md btn-block" href="#">Reservar	</a></p>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div><!--col doctor-->                                                    
-                                                @endforeach
-                                            </div><!--item-->
-                                    </div> <!--carousel-->
-                                </div> <!--animate box-->
-                            </div> <!--row-->
-            </div> <!--container-->
-        </div> <!--colorlib-doctor-->
+
+        
 
         <div class="colorlib-blog">
                 <div class="col-md-12 animate box" style="margin-top:50px; margin-bottom:50px;">
