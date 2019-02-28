@@ -37,8 +37,9 @@ $('#crear').click(() => {
                 console.error(err2);
             });
         }
-        if(data == 201) { //Error al ingresar la info
+        else if(data == 201) { //Error al ingresar la info
             alert("Estás tratando de ingresar un horario que ya existe en la base de datos, ¡No tomes alcohol en horas de trabajo!");
+            console.log(url);
         }
     }).fail((err) => {
         console.error(err);

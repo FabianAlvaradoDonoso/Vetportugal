@@ -185,7 +185,7 @@ class AppointmentController extends Controller
 
         $checking = Appointment::where("vet_id", $vet)->where("state_id", 3)->where("date_times_id", $date_time_id)->get();
 
-        if($checking != null) {
+        if(empty($checking)) {
             return 201; //Ya existe esta búsqueda en la base de datos
         }
         else {
