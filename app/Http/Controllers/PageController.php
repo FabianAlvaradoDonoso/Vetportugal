@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vet;
+use App\Doc;
 
 class PageController extends Controller
 {
     public function inicio()
     {
-        $vet = Vet::all();
-        return view('pagesystem.system.onepage.index');
+        $Docs = Doc::all();
+        return view('pagesystem.system.onepage.index', compact('Docs'));
     }
     public function schedule()
     {

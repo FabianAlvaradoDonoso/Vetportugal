@@ -245,7 +245,7 @@
         </li>
         <li>
             <a href="">
-                <i class="fa fa-archive"></i> <span>RRSS</span>
+                <i class="fa fa-archive"></i> <span>About Us</span>
             </a>
         </li>
         <li>

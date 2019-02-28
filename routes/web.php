@@ -83,3 +83,7 @@ Route::get('/appointments/calendar', 'AppointmentController@calendar')->name('ap
 Route::resource('appointments', 'AppointmentController');
 
 
+//Sistema AUTOADM
+
+Route::resource('Docs', 'DocController');
+
