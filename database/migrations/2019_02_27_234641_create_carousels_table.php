@@ -21,6 +21,7 @@ class CreateCarouselsTable extends Migration
             $table->string('btntitle');
             $table->string('linkbtn');
             $table->string('active');
+            $table->string('imagen');
             $table->string('slug')->unique();
         });
     }

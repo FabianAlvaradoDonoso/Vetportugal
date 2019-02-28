@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCarouselRequest;
+use App\Carousel;
 
 
 class CarouselController extends Controller
@@ -15,8 +16,8 @@ class CarouselController extends Controller
      */
     public function index()
     {
-       
-        return view('pagesystem/Carousel.index');
+        $Carousels = Carousel::all();
+        return view('pagesystem/Carousel.index', compact('Carousels'));
     }
 
     /**
@@ -37,7 +38,26 @@ class CarouselController extends Controller
      */
     public function store(StoreCarouselRequest $request)
     {
-        //
+        $Carousels = new Carousel();
+        if($request->hasFile('imagen')){
+            $file = $request->file('imagen');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/vetportugal/images/', $name);
+          
+        }
+        
+        $Carousels->imagen = $name; 
+        $Carousels->subtitle = $request->input('subtitle');
+        $Carousels->name = $request->input('name');
+        $Carousels->active = $request->input('subtitle');
+        $Carousels->btntitle = $request->input('btntitle');
+        $Carousels->slug = time().$request->input('name');
+        $Carousels->linkbtn = $request->input('linkbtn');
+        $Carousels->save();
+
+        $Carousels = Carousel::all();
+        return view('/pagesystem/Carousel.index', compact('Carousels'));
+
     }
 
     /**
@@ -57,10 +77,9 @@ class CarouselController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Carousel $Carousel)
     {
-        return view('pagesystem.Carousel.edit');         
-
+        return view('pagesystem.Carousel.edit', compact('Carousel'));         
     }
 
     /**
@@ -70,9 +89,18 @@ class CarouselController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Carousel $Carousel)
     {
-        //
+        $Carousel->fill($request->except('imagen'));       
+        if($request->hasFile('imagen')){
+            $file = $request->file('imagen');
+            $name = time().$file->getClientOriginalName();
+            $Carousel->image = $name;
+            $file->move(public_path().'/vetportugal/images/', $name);
+        }
+        $Carousel->save();
+        return redirect()->route('Carousel.index')->with('success','Actualización exitosa.');
+        
     }
 
     /**
@@ -81,8 +109,12 @@ class CarouselController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Carousel $Carousel)
     {
-        //
+        $file_path = public_path().'/vetportugal/images/'.$Carousel->image;
+        \File::delete($file_path);
+        $Carousel->delete();
+        return redirect()->route('Carousel.index')->with('success','Eliminación exitosa.');
+        
     }
 }

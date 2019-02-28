@@ -27,7 +27,8 @@ class StoreCarouselRequest extends FormRequest
             'name' => 'required', 
             'subtitle' => 'required',
             'btntitle'=>'required',
-            'linkbtn' => 'required'
+            'linkbtn' => 'required',
+            'imagen' => 'required'
         ];
     }
 }

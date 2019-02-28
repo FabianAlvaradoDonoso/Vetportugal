@@ -32,6 +32,11 @@
 
 
     <section class="content">
+
+        {!! Form::model($Carousel, ['route' =>['Carousel.update',$Carousel], 'method'=>'PUT','files'=>true])!!}
+            @include('pagesystem.Carousel.form')
+            {!! Form::submit('Actualizar', ['class'=> 'btn btn-primary'])!!}
+        {!! Form::close()!!}
     
     </section>
 @endsection

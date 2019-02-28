@@ -32,8 +32,21 @@
 
 
     <section class="content">
-        <h1>Create Carousels</h1>
-      
+
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                    @foreach ($errors->all() as $error)
+                        <p>{{$error}}</p>            
+                    @endforeach
+            </ul>                
+        </div>
+        @endif
+        
+        {!! Form::open(['route' =>'Carousel.store','action' => 'Carousel@store', 'method'=>'POST','files'=>true])!!}
+            @include('pagesystem.Carousel.form')
+            {!! Form::submit('Guardar', ['class'=> 'btn btn-primary'])!!}
+        {!! Form::close()!!}
     </section>
 @endsection
 

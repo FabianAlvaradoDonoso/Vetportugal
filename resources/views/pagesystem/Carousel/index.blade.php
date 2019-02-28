@@ -11,6 +11,7 @@
 @section('css')
 
 <link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('vetportugal/css/flexslider.css')}}">
 
 @endsection
 
@@ -46,9 +47,32 @@
                         {{$message}}
                     </div>
                 @endif
-                <div class="row">
-                    <h1>Estas en Carousels!</h1>
-           
+                <div class="container">
+                    <div class="flexslider">
+                   
+                        @foreach ($Carousels as $Carousel)
+                        <li style="background-image: url(vetportugal/images/{{$Carousel->imagen}}); background-repeat:no-repeat;">
+                            <div class="overlay"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                                        <div class="slider-text-inner">
+                                            <h1>{{$Carousel->name}}</h1>
+                                             <h2>{{$Carousel->subtitle}}</h2>
+                                             <p><a class="btn btn-primary btn-lg btn-learn" href="{{$Carousel->linkbtn}}">{{$Carousel->btntitle}}</a></p>
+                                             <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Carousel.edit',$Carousel->slug)}}"><i class="glyphicon glyphicon-list"></i>Editar</a></p>
+                                             {!! Form::open([ 'route' => ['Carousel.destroy', $Carousel->slug], 'method'=>'DELETE'])!!}
+                                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm'])!!}
+                                            {!! Form::close()!!}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                            
+                        @endforeach
+                       
+                    </div>           
                 </div>
 
 

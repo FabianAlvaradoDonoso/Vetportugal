@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vet;
 use App\Doc;
+use App\Carousel;
 
 class PageController extends Controller
 {
     public function inicio()
     {
         $Docs = Doc::all();
-        return view('pagesystem.system.onepage.index', compact('Docs'));
+        $Carousels = Carousel::all();
+        return view('pagesystem.system.onepage.index', compact('Docs','Carousels'));
     }
     public function schedule()
     {
