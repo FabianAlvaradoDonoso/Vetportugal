@@ -8,6 +8,12 @@ use App\Doc;
 use App\Carousel;
 use App\Sucursal;
 use App\Service;
+use App\Specialty;
+use App\User;
+use App\Appointment;
+use App\Date;
+use App\Time;
+use App\DateTime;
 
 class PageController extends Controller
 {
@@ -17,12 +23,19 @@ class PageController extends Controller
         $Carousels = Carousel::all();
         $Sucursals = Sucursal::all();
         $Services = Service::all();
-        return view('pagesystem.system.onepage.index', compact('Docs','Carousels','Sucursals','Services'));
+        $Users = User::all();
+        return view('pagesystem.system.onepage.index', compact('Docs','Carousels','Sucursals','Services','Users'));
     }
   
     public function schedule()
     {
-        return view('pagesystem.system.onepage.schedule');
+        /*$Appointments=Appointment::with('dateTime')->get();*/
+        $Appointments=Appointment::with('dateTime','vet','user','state')->get();
+        $Specialties=Specialty::with('vet');
+
+        return $Appointments;
+        /*return view('pagesystem.system.onepage.schedule', compact('Appointments','Specialties','DateTimes'));*/
+        
     }
     public function about()
     {

@@ -18,4 +18,10 @@ class Specialty extends Model
     public function vets(){
         return $this->belongsToMany('App\Vet', 'specialty_vet')->withPivot('id');
     }
+
+    public function vet()
+    {
+        return $this->belongsTo(Vet::class);
+    }
+
 }

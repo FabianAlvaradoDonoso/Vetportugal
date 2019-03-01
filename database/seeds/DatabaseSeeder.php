@@ -44,9 +44,9 @@ class DatabaseSeeder extends Seeder
         //********* Creación de Roles **************
 
         factory(\App\Role::class,1)->create(['name'=> 'vetmaster']);
-        factory(\App\Role::class,1)->create(['name'=> 'vet']);
-        factory(\App\Role::class,1)->create(['name'=> 'client']);
-        factory(\App\Role::class,1)->create(['name'=> 'visitor']);
+        factory(\App\Role::class,2)->create(['name'=> 'vet']);
+        factory(\App\Role::class,3)->create(['name'=> 'client']);
+        factory(\App\Role::class,4)->create(['name'=> 'visitor']);
 
         // ***********************************************************
 
