@@ -6,7 +6,7 @@
                 @foreach ($Appointments as $key =>$value)
                     <p>Nombre : {{$value->vet->user->name}}</p>
                     <p>estado Hora: {{$value->state->state}}</p>
-                    <p>HORA: {{$value->dateTime}}</p>
+                    <p>HORA: {{$value->dateTime->date->date}}</p>
                 @endforeach
             </div>
         </div>

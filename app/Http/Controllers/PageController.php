@@ -31,10 +31,11 @@ class PageController extends Controller
     {
         /*$Appointments=Appointment::with('dateTime')->get();*/
         $Appointments=Appointment::with('dateTime','vet','user','state')->get();
+        $DateTimes = DateTime::with('time','date','appointment')->get();
         $Specialties=Specialty::with('vet');
 
-        return $Appointments;
-        /*return view('pagesystem.system.onepage.schedule', compact('Appointments','Specialties','DateTimes'));*/
+        
+        return view('pagesystem.system.onepage.schedule', compact('Appointments','Specialties','DateTimes'));
         
     }
     public function about()

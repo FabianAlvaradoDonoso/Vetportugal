@@ -24,8 +24,8 @@ class CreateAppointmentsTable extends Migration
             $table->unsignedinteger('state_id');
             $table->foreign('state_id')->references('id')->on('states');
 
-            $table->unsignedinteger('date_times_id');
-            $table->foreign('date_times_id')->references('id')->on('date_times');
+            $table->unsignedinteger('date_time_id');
+            $table->foreign('date_time_id')->references('id')->on('date_times');
 
             $table->timestamps();
         });
