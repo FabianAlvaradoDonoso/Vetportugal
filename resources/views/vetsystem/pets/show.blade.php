@@ -99,8 +99,7 @@
                                 <button data-toggle="dropdown" class="btn btn-info dropdown-toggle btn-block" type="button">Nuevo <span class="caret"></span> </button>
                                 <ul class="dropdown-menu">
                                 <li><a href="{{route('control.create2', $pet->id)}}">Consulta</a></li>
-                                <li><a href="#">Procedimiento</a></li>
-                                <li><a href="#">Exámen</a></li>
+                                <li><a href="{{route('exampet.create2', $pet->id)}}">Exámen</a></li>
                                 <li><a href="#">Hospitalización</a></li>
                                 </ul>
                             </div>
@@ -343,7 +342,63 @@
                                                 Examenes
                                             </header>
                                             <div class="panel-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-hover" id="example1">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Examen</th>
+                                                                <th>Estado</th>
+                                                                <th>Vista</th>
+                                                                <th>Opciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($pet->exampets as $exampet)
+                                                                <tr>
+                                                                    <td>{{$exampet->exam->name}}</td>
+                                                                    <td>{{$exampet->status}}</td>
+                                                                    <td>{{$exampet->views}}</td>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#mostrar_exam-{{$exampet->id}}"><i class="fas fa-eye"></i></button>
+                                                                    </td>
+                                                                </tr>
 
+                                                                <div class="modal modal-info fade" id="mostrar_exam-{{$exampet->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-warning"></i>&nbspAdvertencia</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <strong> Examen:</strong> {{($exampet->exam->name)}} <br>
+                                                                                <strong> Vista:</strong> {{($exampet->views)}} <br>
+                                                                                @if ($exampet->status == 'MR')
+                                                                                    <strong> Estado: </strong>Muestra Recibida<br>
+                                                                                @else
+                                                                                    @if ($exampet->status == 'RR')
+                                                                                        <strong> Estado: </strong>Resultados Recibidos<br>
+                                                                                    @else
+                                                                                        @if ($exampet->status == 'RE')
+                                                                                            <strong> Estado: </strong>Resultados Entregados<br>
+                                                                                        @else
+                                                                                            <strong> Estado: </strong>Hora Agendada<br>
+                                                                                        @endif
+                                                                                    @endif
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                                <a href="{{route('exampet.edit', $exampet->id)}}" class="btn btn-sm btn-success">Editar</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </section>
 

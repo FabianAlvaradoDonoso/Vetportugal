@@ -67,10 +67,13 @@
                                                         <td class="text-center"></td>
                                                         <td class="text-center"></td>
                                                     @else
-                                                        <td class="text-center"><i class="fas fa-check"></i></td>
-                                                        <td class="text-center"></td>
-                                                        <td class="text-center"></td>
-                                                        <td class="text-center"></td>
+                                                        @if ($exampet->status == 'MR')
+                                                            <td class="text-center"><i class="fas fa-check"></i></td>
+                                                            <td class="text-center"></td>
+                                                            <td class="text-center"></td>
+                                                            <td class="text-center"></td>
+
+                                                        @endif
                                                     @endif
                                                 @endif
                                             @endif

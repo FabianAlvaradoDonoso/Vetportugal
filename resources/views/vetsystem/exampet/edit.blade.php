@@ -47,7 +47,7 @@
                                     </div>
                                     <label for="mascota" class="control-label col-lg-2">Nombre Mascota</label>
                                     <div class="col-lg-4">
-                                        <input type="hidden" name="oldValue" id="oldValue" value={{Request::old('mascota')}}>
+                                        <input type="hidden" name="oldValue" id="oldValue" value={{$exampet->pet_id}}>
                                         <select class="form-control" name="mascota" id="mascota">
                                             <option value="" selected disabled>Mascota...</option>
                                         </select>
@@ -75,7 +75,7 @@
                                     </div>
                                     <label for="vista" class="control-label col-lg-2">Vista</label>
                                     <div class="col-lg-4">
-                                        <input class=" form-control" id="nombre" name="nombre" type="text" value="{{$exampet->views}}"">
+                                        <input class=" form-control" id="vista" name="vista" type="text" value="{{$exampet->views}}"">
                                         @if ($errors->has('vista'))
                                             <label for="vista" class="control-label text-left text-danger">{{$errors->first('vista')}}</label>
                                         @endif
@@ -84,8 +84,9 @@
                                 <div class="form-group ">
                                     <label for="estado" class="control-label col-lg-2">Estado</label>
                                     <div class="col-lg-4">
-                                        <select class="form-control" name="Estado" id="Estado" required>
+                                        <select class="form-control" name="estado" id="estado" required>
                                             <option value="" selected disabled>Seleccione Estado...</option>
+                                            {{-- <option value="NT" @if ($exampet->status == 'NT') selected @endif>Muestra No Tomada</option> --}}
                                             <option value="MR" @if ($exampet->status == 'MR') selected @endif>Muestra Retirada</option>
                                             <option value="RR" @if ($exampet->status == 'RR') selected @endif>Resultado Recibido</option>
                                             <option value="RE" @if ($exampet->status == 'RE') selected @endif>Resultado Entregado</option>
@@ -113,4 +114,20 @@
 @endsection
 @section('scripts')
     <script src="{{asset("js/SelectPet.js")}}"></script>
+    <script>
+        var select=document.getElementById("mascota");
+
+        // obtenemos el valor a buscar
+        var buscar=document.getElementById("oldValue").value;
+
+        // recorremos todos los valores del select
+        for(var i=1;i<select.length;i++)
+        {
+            if(select.options[i].text==buscar)
+            {
+                // seleccionamos el valor que coincide
+                select.selectedIndex=i;
+            }
+        }
+    </script>
 @endsection

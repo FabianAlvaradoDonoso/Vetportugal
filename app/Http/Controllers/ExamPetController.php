@@ -6,6 +6,7 @@ use App\ExamPet;
 use Illuminate\Http\Request;
 use App\Exam;
 use App\User;
+use App\Pet;
 
 class ExamPetController extends Controller
 {
@@ -28,7 +29,17 @@ class ExamPetController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $exams = Exam::all();
+        return view('vetsystem.exampet.create', compact('users', 'exams'));
+    }
+
+    public function create2($id)
+    {
+        $pet = Pet::with('client.user')->where('id', $id)->first();
+        $exams = Exam::all();
+        $users = User::all();
+        return view('vetsystem.exampet.create2', compact('exams', 'pet', 'users'));
     }
 
     /**
@@ -39,7 +50,28 @@ class ExamPetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'oldValue'       => 'required',
+            'proceso'   => 'required',
+            'vista'   => 'required',
+            'estado'   => 'required',
+            'type' => 'required',
+        ]);
+        // dd($request);
+
+        $examPet = new ExamPet;
+        $examPet->views = $request->vista;
+        $examPet->status = $request->estado;
+        $examPet->exam_id = $request->proceso;
+        $examPet->pet_id = $request->oldValue;
+        $examPet->save();
+
+        if($request->type == 0){
+            return redirect()->route('exampet.index')->with('success','Examen creado con éxito');
+        }else{
+            return redirect()->action('PetController@show', intval($request->oldValue))
+                            ->with('success', 'Examen registrado');
+        }
     }
 
     /**
@@ -75,9 +107,23 @@ class ExamPetController extends Controller
      * @param  \App\ExamPet  $exam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExamPet $exam)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'mascota'       => 'required',
+            'proceso'   => 'required',
+            'vista'   => 'required',
+            'estado'   => 'required',
+        ]);
+
+        $examPet = ExamPet::find($id);
+        $examPet->views = $request->vista;
+        $examPet->status = $request->estado;
+        $examPet->exam_id = $request->proceso;
+        $examPet->pet_id = $request->mascota;
+        $examPet->save();
+
+        return redirect()->route('exampet.index')->with('success','Examen modificado con éxito');
     }
 
     /**

@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class BreedController extends Controller
 {
+
+    public function getBreeds(Request $request, $id){
+        if($request->ajax()){
+            $breeds = Breed::breeds($id);
+            return response()->json($breeds);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *

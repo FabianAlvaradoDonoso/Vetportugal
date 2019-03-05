@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <meta name="description" content="Aplicación web para la gestion de Perfiles Clinicos de la Veterinaria Portugal">
+    <meta name="keyword" content="Vetportugal, veterinario, mascotas, cuidadoresponsable">
     <link href="{{asset('veticon.ico')}}" rel="icon">
 
-    <title>Plataforma de Gestión de perfiles clínicos</title>
+    <title>Plataforma de Gestión de Perfiles Clínicos</title>
 
     <!-- Bootstrap CSS -->
     <link href="{{asset('plantilla-plataforma/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -36,12 +35,6 @@
     <link href="{{asset('plantilla-plataforma/css/style-responsive.css')}}" rel="stylesheet" />
     <link href="{{asset('plantilla-plataforma/css/xcharts.min.css')}}" rel=" stylesheet">
     <link href="{{asset('plantilla-plataforma/css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
-    <!-- =======================================================
-      Theme Name: NiceAdmin
-      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-      Author: BootstrapMade
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
 
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">

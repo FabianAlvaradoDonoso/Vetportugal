@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Pet;
+use App\User;
+use App\Breed;
 use Illuminate\Http\Request;
+use App\Type;
 
 class PetController extends Controller
 {
@@ -33,7 +36,9 @@ class PetController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $types = Type::all();
+        return view('vetsystem.pets.create', compact('users', 'types'));
     }
 
     /**
@@ -44,7 +49,12 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'mascota'   =>'required',
+            'cliente'   =>'required',
+            'especie'   =>'required',
+            'raza'   =>'required',
+        ]);
     }
 
     /**
@@ -55,9 +65,9 @@ class PetController extends Controller
      */
     public function show($id)
     {
-        $pet = Pet::with('client.user', 'breed.type', 'client.address.city', 'client.address.commune', 'client.phone', 'gender', 'vaccines', 'vets.user')
+        $pet = Pet::with('client.user', 'breed.type', 'client.address.city', 'client.address.commune', 'client.phone', 'gender', 'vaccines', 'vets.user', 'exampets.exam')
             ->find($id);
-        // dd($pet->vets->last()->pivot->date);
+        // dd($pet);
         return view('vetsystem.pets.show', compact('pet'));
     }
 

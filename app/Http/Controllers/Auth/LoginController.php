@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/option';
 
     /**
      * Create a new controller instance.
@@ -49,7 +49,7 @@ class LoginController extends Controller
 
         if( ! request()->has('code') || request()->has('denied')) {
             session()->flash('message', ['danger', __("Inicio de sesión cancelado")]);
-            return redirect('login');
+            return redirect('option');
         }
 
         $socialUser = Socialite::driver($driver)->user();
@@ -86,9 +86,9 @@ class LoginController extends Controller
         if($success === true) {
             \DB::commit();
             auth()->loginUsingId($user->id);
-            return redirect(route('home'));
+            return redirect(route('/option'));
         }
         session()->flash('message', ['danger', $success]);
-        return redirect('login');
+        return redirect('/option');
     }
 }

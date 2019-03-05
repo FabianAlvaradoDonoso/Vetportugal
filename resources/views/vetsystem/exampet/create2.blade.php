@@ -28,11 +28,11 @@
                                 <div class="form-group" >
                                     <label for="cliente" class="control-label col-lg-2">Nombre Cliente</label>
                                     <div class="col-lg-4">
-                                        <select class="form-control" name="cliente" id="cliente" required>
+                                        <select class="form-control" name="cliente" id="cliente" required disabled>
                                             <option value="" selected disabled>Seleccione Cliente...</option>
                                             @foreach ($users as $user)
                                                 @if ($user->role_id == 3)
-                                                    @if (Request::old('cliente') == $user->id)
+                                                    @if ($pet->client->user_id == $user->id)
                                                         <option value="{{$user->id}}" selected>{{$user->name}} {{$user->last_name}}</option>
                                                     @else
                                                         <option value="{{$user->id}}">{{$user->name}} {{$user->last_name}}</option>
@@ -46,8 +46,8 @@
                                     </div>
                                     <label for="mascota" class="control-label col-lg-2">Nombre Mascota</label>
                                     <div class="col-lg-4">
-                                        <input type="hidden" name="oldValue" id="oldValue" value={{Request::old('mascota')}}>
-                                        <select class="form-control" name="mascota" id="mascota">
+                                        <input type="hidden" name="oldValue" id="oldValue" value={{$pet->id}}>
+                                        <select class="form-control" name="mascota" id="mascota" disabled>
                                             <option value="" selected disabled>Mascota...</option>
                                         </select>
                                         @if ($errors->has('mascota'))
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <input type="hidden" name="type" id="type" value="0">
+                                    <input type="hidden" name="type" id="type" value="1">
                                     <label for="estado" class="control-label col-lg-2">Estado</label>
                                     <div class="col-lg-4">
                                         <select class="form-control" name="estado" id="estado" required>

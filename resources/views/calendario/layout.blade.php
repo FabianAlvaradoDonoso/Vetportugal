@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Appointments</title>
+    <meta name="description" content="Aplicación web para la gestion de Reserva de Horas de la Veterinaria Portugal">
+    <meta name="keyword" content="Vetportugal, veterinario, mascotas, cuidadoresponsable">
+    <link href="veticon.ico" rel="icon">
+    <title>Reserva de Horas</title>
+
     {{--BootstrapCSS--}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     {{--Fontawesome--}}
@@ -13,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css">
     <link rel="stylesheet" href="{{asset('calendario/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('calendario/css/simple-sidebar.css')}}">
+
 
     {{-- Versión para imprimir? --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css"> --}}

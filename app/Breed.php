@@ -19,4 +19,8 @@ class Breed extends Model
     public function type(){
         return $this->belongsTo(Type::class)->select('id', 'name');
     }
+
+    public static function breeds($id){
+        return Breed::where('type_id', '=', $id)->get();
+    }
 }

@@ -62,7 +62,7 @@
 
 
 
-                    <a class="btn btn-primary btn-block" role="button" href="{{ route('social_auth', ['driver' => 'google']) }}" style="background-color: #f56476;"><i class="fab fa-google"></i>&nbsp;Google</a>
+                    {{-- <a class="btn btn-primary btn-block" role="button" href="{{ route('social_auth', ['driver' => 'google']) }}" style="background-color: #f56476;"><i class="fab fa-google"></i>&nbsp;Google</a> --}}
                 </form>
 
                 @if (Route::has('password.request'))
