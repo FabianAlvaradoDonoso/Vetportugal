@@ -7,11 +7,13 @@ use App\Date;
 use App\Time;
 use App\User;
 use DateTime;
-use App\DateTime as DatetimeModel;
 use App\State;
 use App\Appointment;
 use Illuminate\Http\Request;
+use App\DateTime as DatetimeModel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Spatie\CalendarLinks\Link;
 
 class AppointmentController extends Controller
 {
@@ -133,20 +135,24 @@ class AppointmentController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        $res = Appointment::where('id', $appointment->id)->delete();
+        return ['success' => true];
+        
     }
 
     public function gestionHoras() {
         $vets = Vet::with('user')->get();
+        $states = State::all();
         $veterinaries = array();
         foreach ($vets as $key => $vet) {
             $veterinaries[$key]['id'] = $vet->id;
             $veterinaries[$key]['name'] = $vet->user->name . ' ' . $vet->user->last_name;
         }
-        return view('calendario.appointments.gestionHoras', compact('veterinaries'));
+        return view('calendario.appointments.gestionHoras', compact('veterinaries', 'states'));
     }
 
     public function getApptsByVet($vet) {
+        
         $appts = Appointment::with('dateTimes', 'state')->where('vet_id', $vet)->get();
         $events = array();
         foreach ($appts as $key => $appt) {
@@ -174,6 +180,8 @@ class AppointmentController extends Controller
             }
         }
 
+        //Definir roles de la vista !!!
+
         return $events;
     }
 
@@ -186,14 +194,27 @@ class AppointmentController extends Controller
         $checking = Appointment::where("vet_id", $vet)->where("state_id", 3)->where("date_times_id", $date_time_id)->get();
 
         if(empty($checking)) {
-            return 201; //Ya existe esta búsqueda en la base de datos
+            return 201;
         }
         else {
             Appointment::create(["vet_id" => $vet, "state_id" => 3, "date_times_id" => $date_time_id]);
             return 200;
         }
-        
+    }
 
+    public function arrayAppointments(Request $request) {
+        foreach ($request->fechas as $key => $fecha) {
+            $this->addAppointmentsByVet($request->vet, $fecha, $request->time);
+        }
+        return 'logrado';
+    }
 
+    public function gestionVets() {
+        $vets = Vet::with('user')->get();
+        return view('calendario.appointments.gestionVets', compact('vets'));
+    }
+
+    public function pruebaGC() {
+        return 'Hola Google';
     }
 }

@@ -25,9 +25,10 @@
     var eventos = {!! json_encode($appointments) !!};
     setTimeout(() => {
         fullcalendar();
-    }, 100);
+    }, 80);
 </script>
 <script src="{!! asset('calendario/js/eventosFullCalendar.js') !!}"></script>
+<script src="{!! asset('calendario/js/infoModal.js') !!}"></script>
 <script src="{!! asset('calendario/js/esperarPagina.js') !!}"></script>
 
 @endsection

@@ -79,6 +79,8 @@ Route::get('/appointments/horas', 'AppointmentController@gestionHoras')->name('a
 Route::get('/appointments', 'AppointmentController@index')->name('appointments.calendar');
 Route::get('/appointments/getApptsByVet/{vet}', 'AppointmentController@getApptsByVet');
 Route::get('/appointments/addAppointmentsByVet/{vet}/{fecha}/{hora}', 'AppointmentController@addAppointmentsByVet');
+Route::get('/appointments/pruebaGC', 'AppointmentController@pruebaGC');
+Route::post('/appointments/arrayAppointments', 'AppointmentController@arrayAppointments');
 Route::resource('appointments', 'AppointmentController');
 
 

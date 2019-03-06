@@ -7,7 +7,7 @@ function fullcalendar() {
             center: 'title',
             right: 'today'
         },
-        height: 650,
+        height: 600,
         noEventsMessage: "No hay atenciones médicas establecidas para esta semana",
         events: eventos,
         timeFormat: 'H:mm',

@@ -1,41 +1,48 @@
- /* Animaciones */
- .animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+/* Fuentes */
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300 !important;
+}
+
+/* Animaciones */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+  
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .fast {
-    -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+
+  to {
+    opacity: 1;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .fadeIn {
-    animation-name: fadeIn;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
 }
 
 body {
-    background-color: #dfdddd;
+    background-color: #eeeeee;
 }
 
 
 #calendar {
   background-color: white;
   padding: 20px;
-  border-radius: 20px;
 }
 
 .fc-popover {
@@ -71,7 +78,7 @@ a, a:hover {
   border-radius: 0;
 }
 
-.fc-list-item {
+.fc-list-item, .fc-event-container {
   cursor: pointer;
 }
 
@@ -83,5 +90,8 @@ a, a:hover {
 #calendarAside {
   background-color: white;
   padding: 20px;
-  border-radius: 20px;
+}
+
+.fc-content {
+  text-align: center !important;
 }

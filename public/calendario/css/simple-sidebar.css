@@ -48,3 +48,36 @@ body {
     margin-left: -15rem;
   }
 }
+
+.bg-dark {
+  background-color: #394a59 !important;
+}
+
+a.logo {
+  font-size: 22px;
+  font-weight: 300;
+  color: #09B5CD;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.lite {
+  color: #000000 !important;
+}
+
+.sidebar-heading {
+  background-color: white;
+}
+
+.bg-light {
+  background-color: white !important;
+}
+
+.list-group-item {
+    border-top: 1px solid white !important;
+    border-bottom: 1px solid white !important;
+}
+
+#menu-toggle {
+  border-radius: 0px !important;
+}
