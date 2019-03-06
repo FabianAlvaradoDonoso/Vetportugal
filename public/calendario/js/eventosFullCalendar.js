@@ -22,8 +22,6 @@ function fullcalendar() {
                 $("#state").css('color', eventObj.color);
                 $("#id").val(data.id);
                 $("#form").attr('action', action);
-    
-    
                 $('#calendarModal').modal();
             }).fail((err) => {
                 console.error(err);

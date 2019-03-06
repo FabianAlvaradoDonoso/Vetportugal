@@ -24,11 +24,15 @@ function horasfullcalendar(events) {
                         let vet_id = $('#veterinarios').val();
                         let url = '/appointments/getApptsByVet/' + vet_id;
                         $.get(url, (data2) => {
+                            $('#calendar').hide();
                             $('#calendar').fullCalendar('removeEvents');
                             $('#calendar').fullCalendar('addEventSource', data2);    
                             $('#calendar').fullCalendar('rerenderEvents');
-                            $('#calendar').fullCalendar('prev');
-                            $('#calendar').fullCalendar('next');
+                            $("#spinner").show();
+                            setTimeout(() => {
+                                $("#spinner").hide();
+                                $("#calendar").show();
+                            }, 200);
                         }).fail((err) => {
                             console.error(err);
                         });

@@ -83,6 +83,7 @@ Route::get('/appointments/getspecialties', 'AppointmentController@getspecialties
 Route::get('/appointments/getFechasByVet/{vet}', 'AppointmentController@getFechasByVet');
 Route::get('/appointments/getVetByEsp/{esp}', 'AppointmentController@getVetByEsp');
 Route::get('/appointments/getHorasByVetFecha/{fecha}/{vet}', 'AppointmentController@getHorasByVetFecha');
+Route::get('/appointments/getVetPhoneNumber/{vet}', 'AppointmentController@getVetPhoneNumber');
 
 Route::post('/appointments/arrayAppointments', 'AppointmentController@arrayAppointments');
 Route::resource('appointments', 'AppointmentController');

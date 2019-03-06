@@ -7,6 +7,7 @@ use App\Date;
 use App\Time;
 use App\User;
 use DateTime;
+use App\Phone;
 use App\State;
 use App\Specialty;
 use App\Appointment;
@@ -313,5 +314,10 @@ class AppointmentController extends Controller
         }
         sort($horas);
         return $horas;
+    }
+
+    public function getVetPhoneNumber($vet) {
+        $phone_id = Vet::where('id', $vet)->first()->phone_id;
+        return Phone::where('id', $phone_id)->first()->mobile_phone;
     }
 }

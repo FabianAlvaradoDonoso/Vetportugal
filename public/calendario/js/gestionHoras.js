@@ -43,9 +43,12 @@ $('#veterinarios').change(() => {
         $('#calendar').fullCalendar('removeEvents');
         $('#calendar').fullCalendar('addEventSource', data);    
         $('#calendar').fullCalendar('rerenderEvents');
-        $('#calendar').fullCalendar('prev');
-        $('#calendar').fullCalendar('next');
-        $('#calendar').show();
+        //Efecto calendario
+        $("#spinner").show();
+        setTimeout(() => {
+            $("#spinner").hide();
+            $("#calendar").show();
+        }, 2000);
     }).fail((err) => {
         console.error(err);
     });
@@ -61,6 +64,14 @@ $('#crear').click(() => {
         var vet = $('#veterinarios').val();
         var date = $("#date").val();
         var time = $("#time").val();
+        var telefono = "";
+        var urlPhone = "/appointments/getVetPhoneNumber/" + vet;
+
+        $.get(urlPhone, (data) => {
+            telefono = data;
+        }).fail((err) => {
+            console.error(err);
+        }); //HACE FALTA CONFIRMAR ESTO EN EL CODIGO
 
         if($("input[name = horasMultiples]:checked").val() == 1) {
             if($("#date").val() == "") {
@@ -76,9 +87,12 @@ $('#crear').click(() => {
                             $('#calendar').fullCalendar('removeEvents');
                             $('#calendar').fullCalendar('addEventSource', events);    
                             $('#calendar').fullCalendar('rerenderEvents');
-                            $('#calendar').fullCalendar('prev');
-                            $('#calendar').fullCalendar('next');    
-                            $('#calendar').show();
+                            //Efecto calendario
+                            $("#spinner").show();
+                            setTimeout(() => {
+                                $("#spinner").hide();
+                                $("#calendar").show();
+                            }, 2000);
                         }).fail((err2) => {
                             console.error(err2);
                         });
@@ -91,7 +105,10 @@ $('#crear').click(() => {
                 });
 
                 textowa = "📅 Estimado " + $("#veterinarios>option:selected").text() + " de acuerdo a lo conversado, se ha agregado el horario de las " + time + " hrs. para el día " + moment(date).format('DD/MM/YYYY') + " Saludos! 👋";
-                window.open("https://api.whatsapp.com/send?phone=56996198670&text="+encodeURI(textowa));
+                // window.open("https://api.whatsapp.com/send?phone=56996198670&text="+encodeURI(textowa));
+                setTimeout(() => {
+                    console.log(`Se quiere enviar el mensaje "${textowa}" al numero de teléfono "${telefono}"`);
+                }, 4000);
             }
         }
         else if($("input[name = horasMultiples]:checked").val() == 2) {
@@ -113,9 +130,12 @@ $('#crear').click(() => {
                         $('#calendar').fullCalendar('removeEvents');
                         $('#calendar').fullCalendar('addEventSource', events);    
                         $('#calendar').fullCalendar('rerenderEvents');
-                        $('#calendar').fullCalendar('prev');
-                        $('#calendar').fullCalendar('next');
-                        $('#calendar').show();
+                        //Efecto calendario
+                        $("#spinner").show();
+                        setTimeout(() => {
+                            $("#spinner").hide();
+                            $("#calendar").show();
+                        }, 2000);
                     }).fail((err2) => {
                         console.error(err2);
                     });
@@ -124,7 +144,10 @@ $('#crear').click(() => {
                 console.error(error);
             });
             textowa = "📅 Estimado " + $("#veterinarios>option:selected").text() + " de acuerdo a lo conversado, se han agregado el horario de las " + time + " hrs. para la semana de " + moment(inicio).format('DD/MM/YYYY') + " y " + moment(fin).format('DD/MM/YYYY') + " Saludos! 👋";
-            window.open("https://api.whatsapp.com/send?phone=56996198670&text="+encodeURI(textowa));
+            // window.open("https://api.whatsapp.com/send?phone=56996198670&text="+encodeURI(textowa));
+            setTimeout(() => {
+                console.log(`Se quiere enviar el mensaje "${textowa}" al numero de teléfono "${telefono}"`);
+            }, 4000);
         }
         else if($("input[name = horasMultiples]:checked").val() == 3) {
             
@@ -149,9 +172,12 @@ $('#crear').click(() => {
                         $('#calendar').fullCalendar('removeEvents');
                         $('#calendar').fullCalendar('addEventSource', events);    
                         $('#calendar').fullCalendar('rerenderEvents');
-                        $('#calendar').fullCalendar('prev');
-                        $('#calendar').fullCalendar('next');
-                        $('#calendar').show();
+                        //Efecto calendario
+                        $("#spinner").show();
+                        setTimeout(() => {
+                            $("#spinner").hide();
+                            $("#calendar").show();
+                        }, 2000);
                     }).fail((err2) => {
                         console.error(err2);
                     });
@@ -161,7 +187,10 @@ $('#crear').click(() => {
             });
     
             textowa = "📅 Estimado " + $("#veterinarios>option:selected").text() + ", de acuerdo a lo conversado se han agregado el horario de las " + time + " hrs. para el mes de " + n.format('MMMM'); + ". Saludos! 👋";
-            window.open("https://api.whatsapp.com/send?phone=56996198670&text="+encodeURI(textowa));            
+            // window.open("https://api.whatsapp.com/send?phone=56996198670&text="+encodeURI(textowa));
+            setTimeout(() => {
+                console.log(`Se quiere enviar el mensaje "${textowa}" al numero de teléfono "${telefono}"`);
+            }, 4000);
         }
     }
 });
