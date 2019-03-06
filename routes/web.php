@@ -79,7 +79,11 @@ Route::get('/appointments/horas', 'AppointmentController@gestionHoras')->name('a
 Route::get('/appointments', 'AppointmentController@index')->name('appointments.calendar');
 Route::get('/appointments/getApptsByVet/{vet}', 'AppointmentController@getApptsByVet');
 Route::get('/appointments/addAppointmentsByVet/{vet}/{fecha}/{hora}', 'AppointmentController@addAppointmentsByVet');
-Route::get('/appointments/pruebaGC', 'AppointmentController@pruebaGC');
+Route::get('/appointments/getspecialties', 'AppointmentController@getspecialties');
+Route::get('/appointments/getFechasByVet/{vet}', 'AppointmentController@getFechasByVet');
+Route::get('/appointments/getVetByEsp/{esp}', 'AppointmentController@getVetByEsp');
+Route::get('/appointments/getHorasByVetFecha/{fecha}/{vet}', 'AppointmentController@getHorasByVetFecha');
+
 Route::post('/appointments/arrayAppointments', 'AppointmentController@arrayAppointments');
 Route::resource('appointments', 'AppointmentController');
 
