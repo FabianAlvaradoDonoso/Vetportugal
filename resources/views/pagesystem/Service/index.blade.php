@@ -10,8 +10,8 @@
 
 @section('css')
 
-<link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('vetportugal/css/flexslider.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('vetportugal/css/flexslider.css')}}"> --}}
 
 @endsection
 
@@ -50,7 +50,7 @@
                 <div class="colorlib-departments">
                     <div class="container">
                             <div class="row">
-                   
+
                                     @foreach ($Services as $Service)
                                     <div class="col-md-4">
                                         <div class="department-wrap animate-box">
@@ -69,17 +69,17 @@
                                                             {!! Form::open([ 'route' => ['Service.destroy', $Service->slug], 'method'=>'DELETE'])!!}
                                                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm'])!!}
                                                            {!! Form::close()!!}
-                                                        </div>                                       
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                                        
+
                                     @endforeach
-                                   
-                                </div> 
-                    </div>          
+
+                                </div>
+                    </div>
                 </div>
 
 

@@ -19,6 +19,17 @@ use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+    public function prueba(){
+        $appts = DatetimeModel::with('time')->whereIn('id', $idsDateTimes)->get();
+        dd($appts);
+        return $appts;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -252,7 +263,7 @@ class AppointmentController extends Controller
         // OJO!
     }
     public function getHorasByVetFecha($fecha, $vet) {
-
+        // $horas = 'Hola';
         $idFecha = Date::where('date', $fecha)->first()->id;
         $idsDateTimes = array();
         $horas = array();
@@ -269,6 +280,7 @@ class AppointmentController extends Controller
         }
         sort($horas);
         return $horas;
+        // return $idFecha;
     }
     public function getVetPhoneNumber($vet) {
         $phone_id = Vet::where('id', $vet)->first()->phone_id;

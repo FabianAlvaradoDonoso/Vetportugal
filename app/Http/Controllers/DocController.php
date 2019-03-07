@@ -43,18 +43,17 @@ class DocController extends Controller
             $file = $request->file('imagen');
             $name = time().$file->getClientOriginalName();
             $file->move(public_path().'/vetportugal/images/', $name);
-          
+
         }
-        
-        $Doc->image = $name; 
-        $Doc->specialty = $request->input('specialty');
+
         $Doc->name = $request->input('name');
+        $Doc->specialty = $request->input('specialty');
         $Doc->description = $request->input('description');
+        $Doc->image = $name;
         $Doc->slug = time().$request->input('name');
         $Doc->save();
 
-        $Docs = Doc::all();
-        return view('/pagesystem/Doc.index', compact('Docs'));
+        return redirect()->route('Docs.index')->with('success','Doctor creado con éxito');
 
     }
 
@@ -66,7 +65,7 @@ class DocController extends Controller
      */
     public function show(Doc $Doc)
     {
-      
+
     }
 
     /**
@@ -77,7 +76,7 @@ class DocController extends Controller
      */
     public function edit(Doc $Doc)
     {
-         return view('pagesystem.doc.edit', compact('Doc'));         
+         return view('pagesystem.doc.edit', compact('Doc'));
     }
 
     /**
@@ -90,7 +89,7 @@ class DocController extends Controller
     public function update(Request $request, Doc $Doc)
     {
 
-        $Doc->fill($request->except('imagen'));       
+        $Doc->fill($request->except('imagen'));
         if($request->hasFile('imagen')){
             $file = $request->file('imagen');
             $name = time().$file->getClientOriginalName();
@@ -99,7 +98,7 @@ class DocController extends Controller
         }
         $Doc->save();
         return redirect()->route('Docs.index')->with('success','Actualización exitosa.');
-        
+
     }
 
     /**
@@ -114,8 +113,8 @@ class DocController extends Controller
         \File::delete($file_path);
         $Doc->delete();
         return redirect()->route('Docs.index')->with('success','Eliminación exitosa.');
-        
+
 
     }
-    
+
 }

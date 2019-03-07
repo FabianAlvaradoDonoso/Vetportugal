@@ -100,12 +100,12 @@
                                         <label for="">Correo Electrónico</label>
                                         <input id="emailUser" type="text" class="form-control">
                                     </div>
-                                    <div id="divButton">
+                                    {{-- <div id="divButton">
 
-                                    </div>
-                                    {{-- <button id="reservar" class="btn btn-primary btn-lg btn-block text-uppercase m-t-20">
+                                    </div> --}}
+                                    <button id="reservar" class="btn btn-primary btn-lg btn-block text-uppercase m-t-20">
                                         <i class="fa fa-calendar-plus-o fa-fw m-r-5"></i> Reservar Hora
-                                    </button> --}}
+                                    </button>
                                 {{-- </form> --}}
                             </div>
                         </div>

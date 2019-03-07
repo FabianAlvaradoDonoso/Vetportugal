@@ -40,7 +40,13 @@
           <div class="sidebar-heading ml-3 text-white text-center">
             <a href="index.html" class="logo">VET <span class="lite">PORTUGAL</span></a>
           </div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="col-10 text-right" style="" id="">
+                <a class="btn btn-sm btn-outline-success" href="{{ url('/option') }}"><i class="fas fa-exchange-alt"></i> Aplicaciones</a>
+                <a class="btn btn-sm btn-outline-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="fas fa-power-off"></i> Salir</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+
             {{-- <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

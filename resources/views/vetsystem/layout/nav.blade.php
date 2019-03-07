@@ -170,7 +170,11 @@
                 </a>
                 <ul class="dropdown-menu  logout">
                     <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="icon_key_alt"></i> {{__("Salir")}}</a>
+                        <a href="{{ url('/option') }}"><i class="fas fa-exchange-alt"></i> Aplicaciones</a>
+
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="fas fa-power-off"></i> Salir</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

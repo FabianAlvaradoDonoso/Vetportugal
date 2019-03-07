@@ -13,11 +13,16 @@
 
 
 Route::get('/ingreso', function () {
-    return view('auth.login');
+    if(!Auth::user()){
+        return view('auth.login');
+    }else{
+        return redirect('option');
+    }
 });
+Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider')->name('social_auth');
-Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
+// Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider')->name('social_auth');
+// Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Auth::routes();
 
@@ -94,5 +99,7 @@ Route::get('/', 'PageController@inicio')->name('index');
 Route::get('/scheduled', 'PageController@schedule')->name('schedule');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contact')->name('contact');
+
+Route::get('/prueba', 'AppointmentController@prueba');
 
 

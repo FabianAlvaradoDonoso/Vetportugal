@@ -16,11 +16,12 @@ class DatesTableSeeder extends Seeder
         DB::table('date_times')->delete();
         DB::table('dates')->delete();
 
-        $fecha = new DateTime('2019-02-19');
+        $fecha = new DateTime();
+        $fecha->setDate(date('Y'), date('m'), date('d'));
         $ahora = $fecha->format('Y-m-d');
 
-        for ($i=0; $i < 7; $i++) { 
-           
+        for ($i=0; $i < 14; $i++) {
+
             Date::create([
                 'date' => $ahora
             ]);

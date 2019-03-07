@@ -29,6 +29,12 @@
                 <span>Auto-Administrador</span>
             </a>
         </div>
+        <div id="divButton">
+            <a  id="logout" class="btn btn-outline-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="icon_key_alt"></i> {{__("Salir")}}</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        </div>
     </div>
     <script src="{{asset('home/assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('home/assets/bootstrap/js/bootstrap.min.js')}}"></script>

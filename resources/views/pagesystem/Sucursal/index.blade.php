@@ -10,8 +10,8 @@
 
 @section('css')
 
-<link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('vetportugal/css/flexslider.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('vetportugal/css/flexslider.css')}}"> --}}
 
 @endsection
 
@@ -63,7 +63,7 @@
                                 </p>
                                 <!-- Split button -->
                                 <div class="btn-group">
-                             
+
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                         <span class="caret"></span><span class="sr-only">Social</span>
                                     </button>
@@ -73,7 +73,7 @@
                                         <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
                                         <li class="divider"></li>
                                     </ul>
-                                 
+
                                     <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Sucursal.edit',$Sucursal->slug)}}">Editar</a></p>
                                             {!! Form::open([ 'route' => ['Sucursal.destroy', $Sucursal->slug], 'method'=>'DELETE'])!!}
                                                 {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm'])!!}
@@ -83,11 +83,11 @@
                         </div>
                     </div>
                 </div>
-                    
+
                 @endforeach
             </div>
         </div>
-        
+
     </section>
 @endsection
 

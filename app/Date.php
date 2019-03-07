@@ -11,6 +11,6 @@ class Date extends Model
         return $this->hasMany(DateTime::class);
     }
     protected $fillable = [
-        'date'
+        'date', 'id',
     ];
 }

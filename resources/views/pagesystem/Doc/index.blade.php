@@ -10,7 +10,7 @@
 
 @section('css')
 
-<link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}"> --}}
 
 @endsection
 
@@ -47,23 +47,30 @@
                     </div>
                 @endif
                 <div class="row">
-                        @foreach ($Docs as $Doc)
-                        <div class="col-md-3 col-sm-6 col-xs-12 animate-box text-center">
-							<div class="doctor">
-								<div class="staff-img" style="background-image: url(vetportugal/images/{{$Doc->image}});"></div> 
-								<div class="desc">
-									<span>{{$Doc->specialty}}</span>
-									<h3><a href="#">Dr. {{$Doc->name}}</a></h3>
-                                    <a href="{{route('Docs.edit', $Doc->slug)}}" class="btn btn-success btn-block"> Editar</a>
-                                        <form class="" action="{{route('Docs.destroy', $Doc->slug)}}" method="post">
-                                            @csrf
-                                            {{method_field('DELETE')}}
-                                            <a type="submit" class="btn btn-danger btn-block"><i class="glyphicon glyphicon-remove"></i> Eliminar</a>
-                                        </form>	
-								</div>
-							</div>  
-						</div>                            
-                        @endforeach
+                    @foreach ($Docs as $Doc)
+                    <div class="col-md-3 col-sm-6 col-xs-12 animate-box text-center">
+                        <div class="doctor">
+                            <div class="" style="">
+                                <img id="showImg" name="showImg" style="height: 150px; width: 150px;" src="/vetportugal/images/{{$Doc->image}}" alt="Card image cap" class="">
+                            </div>
+                            <div class="desc">
+                                <span>{{$Doc->specialty}}</span>
+                                <h3>Dr. {{$Doc->name}}</h3>
+
+                                <a href="{{route('Docs.edit', $Doc->slug)}}" class="btn btn-success "> Editar</a>
+                                <a class="btn btn-danger" href="" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" > Eliminar</a>
+                                <form id="delete-form" action="{{route('Docs.destroy', $Doc->slug)}}" method="POST" style="display: none;">
+                                    @csrf
+                                    {{method_field('DELETE')}}
+                                </form>
+                                {{-- <form class="" action="{{route('Docs.destroy', $Doc->slug)}}" method="post">
+                                    @csrf
+                                    <a type="submit" class="btn btn-danger ">Eliminar</a>
+                                </form> --}}
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
 
 

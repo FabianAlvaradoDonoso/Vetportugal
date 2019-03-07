@@ -91,3 +91,15 @@
 	width: 100vw;
 	height: 100vh;
 }
+#logout {
+	width: 100px;
+	height: 40px;
+	right: 1%;
+	top: 1%;
+	position: fixed;
+	margin-bottom: 5px;
+	outline: none;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	transition: .3s;
+	z-index: 1;
+}

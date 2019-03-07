@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   @yield('css')
 </head>
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -37,9 +37,9 @@
     <!-- Logo -->
     <a href={{url('/dash')}} class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img src={{asset('images/logo2.png')}} alt="Logo"></span>
+      <span class="logo-mini"><img src={{asset('veticon.ico')}} alt="Logo"></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>RED</b>PANDA</span>
+      <span class="logo-lg"><b>VET</b>PORTUGAL</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -53,7 +53,7 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
+          {{-- <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -135,7 +135,7 @@
                 <a href="#">View all tasks</a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <!-- User Account: style can be found in dropdown.less EN CONSTRUCCION -->
           <li class="dropdown user user-menu">
                 @guest
@@ -156,38 +156,17 @@
                       </ul>
                 @else
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../../dist/img/loboPlateado.jpg" class="user-image" alt="User Image">
+                  <img src="../../dist/img/avatar.png" class="user-image" alt="User Image">
                   <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
-                  <li class="user-header" style="background: url('/dist/img/cielo.png') center center ;">
-                    <img src="../../dist/img/loboPlateado.jpg" class="img-circle" alt="User Image">
 
-                    <p class="" style="color: #ffffff">
-                        {{ Auth::user()->name }}
-                      <small>Miembro desde 2019</small>
-                    </p>
-                  </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="row">
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Seguidores</a>
-                      </div>
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Ventas</a>
-                      </div>
-                      <div class="col-xs-4 text-center">
-                        <a href="#">Amigos</a>
-                      </div>
-                    </div>
-                    <!-- /.row -->
-                  </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-info btn-sm">Perfil</a>
+                        <a class="btn btn-sm btn-success" href="{{ url('/option') }}"> Aplicaciones</a>
                     </div>
                     <div class="pull-right">
                         <a href="{{ route('logout') }}" class="btn btn-danger btn-sm" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
@@ -200,9 +179,9 @@
               </li>
               @endguest
           <!-- Control Sidebar Toggle Button -->
-          <li>
+          {{-- <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </nav>
@@ -223,11 +202,11 @@
             </a>
         </li>
         <li class="header">PÁGINA PRINCIPAL</li>
-        <li>
+        {{-- <li>
             <a href="{{url('/Sucursal')}}">
                 <i class="fa fa-tags"></i> <span>Sucursales</span>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="{{url('/Carousel')}}">
                 <i class="fa fa-archive"></i> <span>Carousel</span>
@@ -235,7 +214,7 @@
         </li>
         <li>
             <a href="{{url('/Docs')}}">
-                <i class="fa fa-archive"></i> <span>Doctores</span>
+                <i class="fa fa-user-md"></i> <span>Doctores</span>
             </a>
         </li>
         <li>

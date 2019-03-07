@@ -19,9 +19,7 @@ class AdminRole
     {
         if(Auth::user() && Auth::user()->role_id === 1){
             return $next($request);
-        }else{
-            Abort(403, 'No tiene autorzación para entrar a esta sección.');
         }
-        // return redirect()->back()->with('success','No tiene los privilegios suficientes');
+        Abort(403, 'No tiene autorzación para entrar a esta sección.');
     }
 }

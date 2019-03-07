@@ -18,20 +18,75 @@
     <section class="content-header">
         <h1>
             Doctores
-            <small>Listado</small>
-            {{-- @if (Auth::User()->roles->first()->pivot->role_id == 1) --}}
-                <a href="NewDoc" class="btn btn-primary btn-sm">Nuevo Doctor</a>
-            {{-- @endif --}}
+            <small>Editar</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-            <li class="active">Doctores</li>
+            <li><a href="{{ route('dash') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li class=""><a href="{{ route('Docs.index') }}">Doctores</a></li>
+            <li class="active">Editar</li>
         </ol>
 
     </section>
 
-
     <section class="content">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Editar Doctor</h3>
+            </div>
+            <form class="form-validate form-horizontal " role="form" method="POST" action="{{route('Docs.update',$Doc)}}" novalidate="novalidate" enctype="multipart/form-data">
+                @csrf
+                {{method_field('PUT')}}
+                <div class="box-body">
+                    <div class="form-group" id="formNombre">
+                        <label for="nombre" class="col-sm-2 control-label">Nombre y Apellido</label>
+                        <div class="col-sm-10">
+                                <input id="fullName" name="name" value="{{$Doc->name}}" class="form-control" required="true" value="" type="text">
+                            @if ($errors->has('nombre'))
+                                <span class="help-block">{{$errors->first('nombre')}}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group" id="formPrecio">
+                        <label for="precio" class="col-sm-2 control-label">Especialidad</label>
+                        <div class="col-sm-10">
+                            <input id="specialty" name="specialty" value="{{$Doc->specialty}}" class="form-control" required="true" value="" type="text">
+                            @if ($errors->has('precio'))
+                                <span class="help-block">{{$errors->first('precio')}}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group" id="formDescripcion">
+                        <label for="descripcion" class="col-sm-2 control-label">Descripción</label>
+                        <div class="col-sm-10">
+                            <input id="description" name="description" value="{{$Doc->description}}" class="form-control" required="true" value="" type="text">
+                            @if ($errors->has('descripcion'))
+                                <span class="help-block">{{$errors->first('descripcion')}}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group" id="">
+                        <label for="imagen" class="col-sm-2 control-label">Imagen</label>
+                        <div class="col-sm-10">
+                            <input type="file" src="" alt="" class="form-control" value={{$Doc->image}} id="imagen" name="imagen" onchange="cambiarImagen()">
+                            <label for="imagen">
+                                <div for="imagen" id="colocar" name="colocar" class="row invoice-info">
+                                    <img id="showImg" name="showImg" style="height: 200px; width:200px; margin-left: 15vw; margin-top: 5%;" src="/vetportugal/images/{{$Doc->image}}" alt="Card image cap" class="">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <a href="{{ route('Docs.index') }}"class="btn btn-danger">Cancelar</a>
+                        <button class="btn btn-primary ml-3" type="submit">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    {{-- <section class="content">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Editando</h3>
@@ -44,8 +99,8 @@
                         {{$message}}
                     </div>
                 @endif
-              
-              
+
+
                 <table class="table table-striped">
                 <tbody>
                     <tr>
@@ -57,50 +112,40 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Nombre y Apellido</label>
                                     <div class="col-md-8 inputGroupContainer">
-                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="fullName" name="name" value="{{$Doc->name}}" class="form-control" required="true" value="" type="text"></div>
+                                        <input id="fullName" name="name" value="{{$Doc->name}}" class="form-control" required="true" value="" type="text">
                                     </div>
-                                </div>                        
-                                
+                                </div>
+
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Especialidad</label>
-                                    <div class="col-md-8 inputGroupContainer">
-                                    <div class="input-group"><span class="input-group-addon"></span><input id="specialty" name="specialty" value="{{$Doc->specialty}}" class="form-control" required="true" value="" type="text"></div>
+                                    <div class="col-md-8">
+                                        <input id="specialty" name="specialty" value="{{$Doc->specialty}}" class="form-control" required="true" value="" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Descripción</label>
-                                    <div class="col-md-8 inputGroupContainer">
-                                    <div class="input-group"><span class="input-group-addon"></span><input id="description" name="description" value="{{$Doc->description}}" class="form-control" required="true" value="" type="text"></div>
+                                    <div class="col-md-8">
+                                        <input id="description" name="description" value="{{$Doc->description}}" class="form-control" required="true" value="" type="text">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group" id="formImagen">
-                                        <label for="imagen" class="col-sm-2 control-label">Imagen</label>
-                                        <div class="col-sm-10">
+                                        <label for="imagen" class="col-md-4 control-label">Imagen</label>
+                                        <div class="col-sm-8">
                                             <input type="file" class="form-control" name="imagen">
                                             @if ($errors->has('imagen'))
                                                 <span class="help-block">{{$errors->first('imagen')}}</span>
                                             @endif
                                         </div>
-                                </div>                     
-                                    <!--<div class="form-group" id="formDestacado">
-                                        <label for="destacado" class="col-sm-2 control-label">Otro</label>
-                                        <div class="col-sm-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" id="destacado" name="destacado" @if (Request::old('destacado')) checked @endif>
-                                                    Destacado
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>-->
-                    
-                                <div class="box-footer">
-                                    <div class="pull-right">
-                                        <button class="btn btn-primary ml-3" type="submit">Guardar</button>
-                                        <button class="btn btn-primary ml-3" type="close">Cerrar</button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-8 text-right">
+                                        <button class="btn btn-success ml-3" type="submit">Guardar</button>
+                                        <a href="{{ route('Docs.index') }}"class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
+
                             </fieldset>
                         </form>
                         </td>
@@ -110,42 +155,15 @@
                     </tr>
                 </tbody>
                 </table>
-              
+
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
 
 {{-- --------------------------------------------------------------------- --}}
 
 @section('scripts')
 
-<script>
-    $(window).load(function(){
-
-$(function() {
- $('#imagen').change(function(e) {
-     addImage(e); 
-    });
-
-    function addImage(e){
-     var file = e.target.files[0],
-     imageType = /image.*/;
-   
-     if (!file.type.match(imageType))
-      return;
- 
-     var reader = new FileReader();
-     reader.onload = fileOnload;
-     reader.readAsDataURL(file);
-    }
- 
-    function fileOnload(e) {
-     var result=e.target.result;
-     $('#blah').attr("src",result);
-    }
-   });
- });
-
- </script>
+ <script src="{{asset("js/changeImage.js")}}"></script>
 @endsection

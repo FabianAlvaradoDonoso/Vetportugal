@@ -7,7 +7,7 @@ $('#selectEsp').change(() => {
 	let url = '/appointments/getVetByEsp/' + $('#selectEsp').val();
 	$.get(url, (data) => {
 		$('#selectVet').empty();
-		$('#selectVet').append('<option value="0" disabled selected>-Seleccione un veterinario-</option>');
+		$('#selectVet').append('<option value="" disabled selected>-Seleccione un veterinario-</option>');
 		data.forEach((veterinary) => {
 			let name = `${veterinary.user.name} ${veterinary.user.last_name}`;
 			$('#selectVet').append('<option value="' + veterinary.id + '">' + name + '</option>');
@@ -20,13 +20,14 @@ $('#selectEsp').change(() => {
 $('#selectVet').change(() => {
 	$('#siguiente').removeClass('disabled');
 	$('#fechasFiltradas').empty();
+	$('#fechasFiltradas').append('<option value="" disabled selected>-Seleccione una fecha-</option>');
 
 	$('#paso2').show();
 	document.getElementById('paso2').classList.add('animated', 'fadeIn');
 
 	$('#fechasFiltradas').empty();
 	let hoy = moment();
-	for (let index = 0; index < 10; index++) {
+	for (let index = 0; index < 20; index++) {
 		if (hoy.weekday() != 6) {
 			$('#fechasFiltradas').append(
 				'<option value="' + hoy.format('YYYY-MM-DD') + '">' + hoy.format('LL') + '</option>'
@@ -52,8 +53,8 @@ $('#fechasFiltradas').change(() => {
 	}).fail((err) => {
 		$('#selectHoras').empty();
 		$('#selectHoras').append('<option value="1" >No hay horas disponibles para esa fecha</option>');
-		$('#selectHoras').append('<option value="2" >No hay horas disponibles para esa fecha</option>');
-
+		// $('#selectHoras').append('<option value="2" >No hay horas disponibles para esa fecha</option>');
+		//Eso lo tengo de prueba para el paso 4, una ves que funcione lo elimino!!.
 		console.error(err);
 	});
 });
@@ -80,45 +81,48 @@ function reservarShow() {
 	var email = $('#emailUser').val();
 
 	if (nombre != '' && telefono != '' && email != '') {
-		if (!$('#reservar').length) {
-			$('#divButton').html(
-				'<button id="reservar" class="btn btn-primary btn-lg btn-block text-uppercase m-t-20"><i class="fa fa-calendar-plus-o fa-fw m-r-5"></i> Reservar Hora</button>'
-			);
-			document.getElementById('divButton').classList.add('animated', 'fadeIn');
-		}
+		// if (!$('#reservar').length) {
+		// 	$('#divButton').html(
+		// 		'<button id="reservar" class="btn btn-primary btn-lg btn-block text-uppercase m-t-20"><i class="fa fa-calendar-plus-o fa-fw m-r-5"></i> Reservar Hora</button>'
+		// 	);
+		// 	document.getElementById('divButton').classList.add('animated', 'fadeIn');
+		// }
+		$('#reservar').show();
 	} else {
-		document.getElementById('divButton').classList.remove('animated', 'fadeIn');
-		$('#divButton').empty();
+		$('#reservar').hide();
 	}
 }
 
-$('#reservar').click(() => {
-	if ($('#fechasFiltradas').val() != null || $('#selectHoras').val() != null || $('#selectVet').val() != null) {
-		let url =
-			'/appointments/takeAppointment/' +
-			$('#fechasFiltradas').val() +
-			'/' +
-			$('#selectHoras').val() +
-			'/' +
-			$('#selectVet').val();
-		$.post(
-			url,
-			{
-				state_id: 2,
-				name: $('#nameUser').val(),
-				phone: $('#phoneUser').val(),
-				_token: $('input[type="hidden"]').val()
-			},
-			(data) => {
-				if (data != 'logrado') alert('Ocurrió un problema');
-				else alert('Cita reservada');
-			}
-		).fail((err) => {
-			console.error(err);
-		});
-	} else {
-		alert('Complete todos los PASOS antes de continuar');
-	}
+$('#reservar').click((e) => {
+	e.preventDefault(); // Creo que es eso :c No XD
+	console.log('hola?');
+	let url =
+		'/appointments/takeAppointment/' +
+		$('#fechasFiltradas').val() +
+		'/' +
+		$('#selectHoras').val() +
+		'/' +
+		$('#selectVet').val();
+	$.post(
+		url,
+		{
+			state_id: 2,
+			name: $('#nameUser').val(),
+			phone: $('#phoneUser').val(),
+			_token: $('input[type="hidden"]').val()
+		},
+		(data) => {
+			if (data != 'logrado') alert('Ocurrió un problema');
+			else alert('Cita reservada');
+		}
+	).fail((err) => {
+		console.error(err);
+	});
+
+	// if ($('#fechasFiltradas').val() != null || $('#selectHoras').val() != null || $('#selectVet').val() != null) {
+	// } else {
+	// 	alert('Complete todos los PASOS antes de continuar');
+	// }
 });
 
 $(document).ready(function() {
@@ -127,7 +131,7 @@ $(document).ready(function() {
 	$('#paso4').hide();
 	// $('#fechasFiltradas').hide();
 	// $('#selectHoras').hide();
-	// $('#reservar').hide();
+	$('#reservar').hide();
 	let url = '/appointments/getspecialties';
 	$.get(url, (data) => {
 		data.forEach((specialty) => {

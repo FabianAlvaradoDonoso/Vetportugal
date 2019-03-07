@@ -8,6 +8,8 @@ use App\User;
 use App\UserSocialAccount;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -41,15 +43,24 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToProvider(string $driver){
+    public function redirectToProvider(string $driver)
+    {
+        if(Auth::user()){
+            return redirect()->route('option');
+        }
         return Socialite::driver($driver)->redirect();
     }
 
-    public function handleProviderCallback(string $driver){
+    public function handleProviderCallback(string $driver)
+    {
+        if(Auth::user()){
+            return redirect()->route('option');
+        }
+
 
         if( ! request()->has('code') || request()->has('denied')) {
             session()->flash('message', ['danger', __("Inicio de sesión cancelado")]);
-            return redirect('option');
+            return redirect('ingreso');
         }
 
         $socialUser = Socialite::driver($driver)->user();
@@ -89,6 +100,10 @@ class LoginController extends Controller
             return redirect(route('/option'));
         }
         session()->flash('message', ['danger', $success]);
-        return redirect('/option');
+        return redirect('/ingreso');
     }
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/ingreso');
+      }
 }
