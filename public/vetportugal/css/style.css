@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6, figure {
       .colorlib-nav #colorlib-logo a i {
         font-size: 34px; }
   .colorlib-nav .menu-wrap {
-    padding: 10px 0 25px 0;
+    padding: 10px 0 10px 0;
     width: 100%; }
     .colorlib-nav .menu-wrap-fixed {
       background: #4fdbe5;
@@ -150,12 +150,34 @@ h1, h2, h3, h4, h5, h6, figure {
       top:0;
       width:100%;
   }
+
+  .colorlib-nav .minilogo-none {
+    display:none;
+}
+
+  .colorlib-nav .menu-wrap-fixed ul li img{
+    display:true;
+  }
+
+     
   .colorlib-nav .menu-wrap-fixed ul li a {
     color: #fff;
   }
-  @media screen and (max-width: 669px) {
+
+  .colorlib-nav .menu-wrap-fixed ul li img {
+    color: #fff;
+    width: 35px;
+  }
+
+  @media screen and (max-width: 768px) {
     .colorlib-nav .menu-wrap {
       display: none; } }
+
+  @media screen and (max-width: 768px) {
+    .colorlib-nav .minilogo  {
+      display: none; } }
+
+    
   
   .colorlib-nav .menu-1 {
     width: 100%;
@@ -241,7 +263,7 @@ h1, h2, h3, h4, h5, h6, figure {
     text-align: right;
     display: inline-block;
     width: 100%; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: px) {
       .colorlib-nav .btn-cta {
         text-align: center !important; } }
     .colorlib-nav .btn-cta a {

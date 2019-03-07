@@ -8,7 +8,7 @@
                     <ul class="colorlib-footer-links">
                         <li>Avenida Portugal 1015, <br> Santiago</li>
                         <li><a href="tel://56222226819"><i class="icon-phone"></i> + 562 2222 6819</a></li>
-                        <li><a href="mailto:info@yoursite.com"><i class="icon-mail"></i> contacto@vetportugal.cl</a></li>
+                        <li><a href="mailto:contacto@vetportugal.cl"><i class="icon-mail"></i> contacto@vetportugal.cl</a></li>
                         <!--<li><a href="http://luxehotel.com"><i class="icon-location4"></i> yourwebsite.com</a></li>-->
                         <li>Lunes a Viernes: 10:30 – 20:30</li>
                         <li>Sábado: 10:30 – 19:00</li>
@@ -72,7 +72,7 @@
                         <textarea class="form-control" id="message" rows="3" placeholder="Message"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" id="btn-submit" class="btn btn-primary btn-send-message btn-md" value="Send Message">
+                        <input type="submit" id="btn-submit" class="btn btn-primary btn-send-message btn-md" value="Enviar Mensaje">
                     </div>
                 </form>
             </div>

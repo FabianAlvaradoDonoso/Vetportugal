@@ -95,3 +95,9 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contact')->name('contact');
 
 
+//Mail Contactenos
+
+Route::post('/sendemail', 'ContactController@sendemail');
+Route::post('/envia', 'ContactController@envia');
+
+

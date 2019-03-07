@@ -1,8 +1,8 @@
-<div class="colorlib-loader"></div>
+
 <div id="page">
     <nav class="colorlib-nav" role="navigation">
         <div class="top-menu">
-            <div class="container">
+            <div id="toptop" class="container">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="top">
@@ -27,26 +27,27 @@
                     </div>
                 </div>
             </div>
+            
             <div class="menu-wrap">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="menu-1">
                                 <ul>
-                                    <li class="active"><a href="{{url('/index')}}">Home</a></li>
+                                    <li><img src="/vetportugal/images/user.png" id="minilogo" class="minilogo"></li>
+                                    <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a href="{{url('/')}}">Home</a></li>
                                     <li><a href="#colorlib-services">Servicios</a></li>
                                     <li><a href="#colorlib-doctor">Doctores</a></li>
                                     <!--li><a href="#colorlib-testimonial">Testimonios</a></li-->
-                                    <li class="has-dropdown">
-                                        <a href="{{url('/scheduled')}}">Reserva</a>
+                                    <li class="has-dropdown nav-item {{ request()->is('departments') ? 'active' : '' }}">
+                                        <a href="{{url('/departments')}}">Departamentos</a>
                                         <ul class="dropdown">
-                                            <li><a href="schedule.php">Cirugia</a></li>
-                                            <li><a href="schedule.php">Odontología</a></li>
-                                            <li><a href="schedule.php">Traumatología</a></li>
+                                            <li><a href="{{url('/departments')}}">Cirugia</a></li>
+                                            <li><a href="{{url('/departments')}}">Odontología</a></li>
+                                            <li><a href="{{url('/departments')}}">Traumatología</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{url('/about')}}">Nosotros</a></li>
-                                    <li><a href="{{url('/contact')}}">Contacto</a></li>
+                                    <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}"><a href="{{url('/contact')}}">Contacto</a></li>
                                 </ul>
                             </div>
                         </div>

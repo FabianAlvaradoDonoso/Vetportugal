@@ -61,8 +61,8 @@
                                                     <p>{{$Service->description}}</p>
                                                     <div class="department-info">
                                                         <div class="block">
-                                                            <h2><a href="doctors-single.html">Paul Merriweather</a></h2>
-                                                            <span>{{$Service->price}}</span>
+                                                            <h2>{{$Service->resumen}}</h2>
+                                                            <span>{{$Service->description}}</span>
                                                         </div>
                                                         <div class="block">
                                                             <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Service.edit', $Service->slug)}}">Editar</a></p>

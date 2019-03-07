@@ -18,7 +18,8 @@ class CreateServicesTable extends Migration
             $table->timestamps();
             $table->string('slug')->unique();
             $table->string('name');
-            $table->text('description');
+            $table->longtext('description');
+            $table->string('resumen');
             $table->string('imagen');
             $table->string('active');
             $table->integer('price');                        

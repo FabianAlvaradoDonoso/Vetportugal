@@ -43,17 +43,25 @@
 	};
 
 	$(document).ready(function(){
+
+		
 		var altura = $('.menu-wrap').offset().top;
 		
 		$(window).on('scroll', function(){
+		
 			if ( $(window).scrollTop() > altura ){
-				$('.menu-wrap').addClass('menu-wrap-fixed');
+				$('.minilogo').removeClass('minilogo-none');
+				$('.menu-wrap').addClass('menu-wrap-fixed');				
+				
 			} else {
 				$('.menu-wrap').removeClass('menu-wrap-fixed');
+				$('.minilogo').addClass('minilogo-none');
+	
 			}
 		});
 	
 	});
+	
 
 	var offcanvasMenu = function() {
 

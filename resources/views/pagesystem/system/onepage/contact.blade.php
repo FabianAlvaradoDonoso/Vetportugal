@@ -8,29 +8,30 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h2>Información de Contacto</h2>
-                        <form action="#">
+                        <form id="contactForm" action="envia" method="POST">
+                            {{ csrf_field() }}
                             <div class="row form-group">
                                 <div class="col-md-6">
                                     <label for="fname">Nombres</label>
-                                    <input type="text" id="fname" class="form-control mb" placeholder="Sus nombres">
+                                    <input type="text" name="name" id="name" class="form-control mb" placeholder="Sus nombres">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lname">Apellidos</label>
-                                    <input type="text" id="lname" class="form-control" placeholder="Sus apellidos">
+                                    <input type="text" name="lname" id="lname" class="form-control" placeholder="Sus apellidos">
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <label for="email">Email</label>
-                                    <input type="text" id="email" class="form-control" placeholder="ejemplo@email.com">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@email.com">
                                 </div>
                             </div>
 
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <label for="subject">Asunto</label>
-                                    <input type="text" id="subject" class="form-control" placeholder="Asunto del mensaje">
+                                    <input type="text" name="subject" id="subject" class="form-control" placeholder="Asunto del mensaje">
                                 </div>
                             </div>
 

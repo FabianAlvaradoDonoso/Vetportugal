@@ -11,6 +11,10 @@
     {!! Form::text('price', null, ['class'=> 'form-control'])!!}
 </div>
 <div class="form-group">
+    {!! Form::label('price', 'Precio')!!}
+    {!! Form::textarea('price', null, ['class'=> 'form-control'])!!}
+</div>
+<div class="form-group">
     {!! Form::label('imagen', 'Imagen')!!}
     {!! Form::file('imagen')!!}
 </div>
