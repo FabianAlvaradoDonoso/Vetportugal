@@ -19,9 +19,14 @@ class DateTime extends Model
         return $this->belongsTo(Date::class);
     }
 
-    public function appointments()
+    public function appointment()
     {
         return $this->hasMany(Appointment::class);
+    }
+    
+    public function vet()
+    {
+        return $this->hasMany(Vet::class);
     }
 
 }

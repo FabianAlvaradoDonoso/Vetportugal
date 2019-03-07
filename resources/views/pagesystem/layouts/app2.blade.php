@@ -17,7 +17,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href={{asset('dist/css/skins/_all-skins.min.css')}}>
-  <link href="{{asset('veticon.ico')}}" rel="icon">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -219,34 +218,34 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU DE NAVEGACION</li>
         <li>
-            <a href={{url('/dash')}}>
+            <a href="{{url('/dash')}}"">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
         <li class="header">PÁGINA PRINCIPAL</li>
         <li>
-            <a href="">
+            <a href="{{url('/Sucursal')}}">
                 <i class="fa fa-tags"></i> <span>Sucursales</span>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url('/Carousel')}}">
                 <i class="fa fa-archive"></i> <span>Carousel</span>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url('/Docs')}}">
                 <i class="fa fa-archive"></i> <span>Doctores</span>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{url('/Service')}}">
                 <i class="fa fa-archive"></i> <span>Services</span>
             </a>
         </li>
         <li>
             <a href="">
-                <i class="fa fa-archive"></i> <span>RRSS</span>
+                <i class="fa fa-archive"></i> <span>About Us</span>
             </a>
         </li>
         <li>

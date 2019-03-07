@@ -38,7 +38,7 @@
                                     <li><a href="#colorlib-doctor">Doctores</a></li>
                                     <!--li><a href="#colorlib-testimonial">Testimonios</a></li-->
                                     <li class="has-dropdown">
-                                        <a href="{{url('/schedule')}}">Reserva</a>
+                                        <a href="{{url('/scheduled')}}">Reserva</a>
                                         <ul class="dropdown">
                                             <li><a href="schedule.php">Cirugia</a></li>
                                             <li><a href="schedule.php">Odontología</a></li>

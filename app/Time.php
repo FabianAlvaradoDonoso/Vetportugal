@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Time extends Model
 {
-    public function datetimes()
+    public function dateTime()
     {
         return $this->hasMany(DateTime::class);
     }

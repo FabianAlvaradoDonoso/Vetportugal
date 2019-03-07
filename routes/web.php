@@ -63,6 +63,13 @@ Route::group( ['middleware' => 'auth' ], function() {
     //Page system -- Pagina Web
     Route::get('/autoadm', 'PageController@autoadm')->name('autoadm');
 
+    //Sistema AUTOADM
+
+    Route::resource('Docs', 'DocController');
+    Route::resource('Carousel', 'CarouselController');
+    Route::resource('Sucursal', 'SucursalController');
+    Route::resource('Service', 'ServiceController');
+
     // Ruta Dashboard
     Route::get('/dash','PageController@dash')->name('dash');
 

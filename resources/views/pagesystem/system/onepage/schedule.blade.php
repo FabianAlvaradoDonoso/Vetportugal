@@ -1,7 +1,15 @@
 @extends('pagesystem.system.layouts.master');
 @section('content')
-    <div class="container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/QOomYeOOKM4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <section>
+        <div class="container">
+            <div class="row">
+                @foreach ($Appointments as $key =>$value)
+                    <p>Nombre : {{$value->vet->user->name}}</p>
+                    <p>estado Hora: {{$value->state->state}}</p>
+                    <p>HORA: {{$value->dateTime->date->date}}</p>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
 @endsection
