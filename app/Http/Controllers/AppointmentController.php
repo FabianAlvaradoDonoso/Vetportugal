@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $states = State::all();
@@ -190,62 +191,62 @@ class AppointmentController extends Controller
     public function getspecialties() {
         return Specialty::all();
     }
-    public function getFechasByVet($vet) {
+    // public function getFechasByVet($vet) {
 
-        $idsFechas = array();
-        $idsHoras = array();
-        $idsFechasHoras = array();
-        $idsDatetimesAppts = array();
-        $fechas = array();
-        $fechas_ids = array();
+    //     $idsFechas = array();
+    //     $idsHoras = array();
+    //     $idsFechasHoras = array();
+    //     $idsDatetimesAppts = array();
+    //     $fechas = array();
+    //     $fechas_ids = array();
 
-        // Fecha actual
-        $hoy = new DateTime();
-        $hoy->setTime(0,0,0);
-        $idHoy = Date::where('date', $hoy->format('Y-m-d'))->first()->id;
-        //Encontrar todas las fechas mayores
+    //     // Fecha actual
+    //     $hoy = new DateTime();
+    //     $hoy->setTime(0,0,0);
+    //     $idHoy = Date::where('date', $hoy->format('Y-m-d'))->first()->id;
+    //     //Encontrar todas las fechas mayores
 
-        $cantidadFechas = Date::count();
-        for ($i=0; $i < $cantidadFechas; $i++) {
-            $fecha = new DateTime(Date::all()[$i]->date);
-            if($hoy < $fecha) {
-                array_push($idsFechas, Date::all()[$i]->id);
-            }
-        } //Fechas posibles
-        $cantidadHoras = Time::count();
-        $hoy = new DateTime();
-        $hoy->modify('-3 hours'); // OJO CON EL CAMBIO DE HORA
-        $hoy->modify('+10 minutes'); // OJO CON EL CAMBIO DE HORA
-        for ($i=0; $i < $cantidadHoras; $i++) {
-            $fecha = new DateTime($hoy->format('Y-m-d') . ' ' . Time::all()[$i]->time);
-            if($hoy <= $fecha)
-                array_push($idsHoras, Time::all()[$i]->id);
-        } //Horas posibles (solo aplicables al día)
-        $cantidadFechasHoras = DatetimeModel::count();
-        for ($i=0; $i < $cantidadFechasHoras; $i++) {
-            if(DatetimeModel::all()[$i]->date_id === $idHoy && in_array(DatetimeModel::all()[$i]->time_id, $idsHoras))
-                array_push($idsFechasHoras, DatetimeModel::all()[$i]->id);
+    //     $cantidadFechas = Date::count();
+    //     for ($i=0; $i < $cantidadFechas; $i++) {
+    //         $fecha = new DateTime(Date::all()[$i]->date);
+    //         if($hoy < $fecha) {
+    //             array_push($idsFechas, Date::all()[$i]->id);
+    //         }
+    //     } //Fechas posibles
+    //     $cantidadHoras = Time::count();
+    //     $hoy = new DateTime();
+    //     $hoy->modify('-3 hours'); // OJO CON EL CAMBIO DE HORA
+    //     $hoy->modify('+10 minutes'); // OJO CON EL CAMBIO DE HORA
+    //     for ($i=0; $i < $cantidadHoras; $i++) {
+    //         $fecha = new DateTime($hoy->format('Y-m-d') . ' ' . Time::all()[$i]->time);
+    //         if($hoy <= $fecha)
+    //             array_push($idsHoras, Time::all()[$i]->id);
+    //     } //Horas posibles (solo aplicables al día)
+    //     $cantidadFechasHoras = DatetimeModel::count();
+    //     for ($i=0; $i < $cantidadFechasHoras; $i++) {
+    //         if(DatetimeModel::all()[$i]->date_id === $idHoy && in_array(DatetimeModel::all()[$i]->time_id, $idsHoras))
+    //             array_push($idsFechasHoras, DatetimeModel::all()[$i]->id);
 
-            else
-                if(in_array(DatetimeModel::all()[$i]->date_id, $idsFechas))
-                    array_push($idsFechasHoras, DatetimeModel::all()[$i]->id);
-        } //FechasHoras posibles
-        $cantidadAppts = Appointment::count();
-        for ($i=0; $i < $cantidadAppts; $i++) {
-            if(Appointment::all()[$i]->veterinary_id === $vet)
-                array_push($idsDatetimesAppts, Appointment::all()[$i]->date_times_id);
-        }
-        $idsFechasHoras = array_diff($idsFechasHoras, $idsDatetimesAppts);
-        for ($i=0; $i < count($idsFechasHoras); $i++) {
-            array_push($fechas_ids, DatetimeModel::with('date')->where('id', $idsFechasHoras[$i])->first()->date->id);
-        }
-        $fechas_ids = array_values(array_unique($fechas_ids));
-        sort($fechas_ids);
-        for ($i=0; $i < count($fechas_ids); $i++) {
-            array_push($fechas, Date::where('id', $fechas_ids[$i])->first()->date);
-        }
-        return $fechas;
-    }
+    //         else
+    //             if(in_array(DatetimeModel::all()[$i]->date_id, $idsFechas))
+    //                 array_push($idsFechasHoras, DatetimeModel::all()[$i]->id);
+    //     } //FechasHoras posibles
+    //     $cantidadAppts = Appointment::count();
+    //     for ($i=0; $i < $cantidadAppts; $i++) {
+    //         if(Appointment::all()[$i]->veterinary_id === $vet)
+    //             array_push($idsDatetimesAppts, Appointment::all()[$i]->date_times_id);
+    //     }
+    //     $idsFechasHoras = array_diff($idsFechasHoras, $idsDatetimesAppts);
+    //     for ($i=0; $i < count($idsFechasHoras); $i++) {
+    //         array_push($fechas_ids, DatetimeModel::with('date')->where('id', $idsFechasHoras[$i])->first()->date->id);
+    //     }
+    //     $fechas_ids = array_values(array_unique($fechas_ids));
+    //     sort($fechas_ids);
+    //     for ($i=0; $i < count($fechas_ids); $i++) {
+    //         array_push($fechas, Date::where('id', $fechas_ids[$i])->first()->date);
+    //     }
+    //     return $fechas;
+    // }   DIGNA DE UN DISPARO AL DIEGO
     public function getVetByEsp($esp) {
         return Vet::with('user')->get();
         // OJO!
@@ -272,5 +273,12 @@ class AppointmentController extends Controller
     public function getVetPhoneNumber($vet) {
         $phone_id = Vet::where('id', $vet)->first()->phone_id;
         return Phone::where('id', $phone_id)->first()->mobile_phone;
+    }
+    public function takeAppointment($fecha, $hora, $vet, Request $request) {
+        $time_id = Time::where('time', $hora)->first()->id;
+        $date_id = Date::where('date', $fecha)->first()->id;
+        $date_time_id = DatetimeModel::where('time_id', $time_id)->where('date_id', $date_id)->first()->id;
+        Appointment::where('date_times_id', $date_time_id)->where('vet_id', $vet)->update($request->except(['_token']));
+        return 'logrado';
     }
 }

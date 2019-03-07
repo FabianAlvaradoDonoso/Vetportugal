@@ -15,6 +15,16 @@ use App\Time;
 use App\DateTime;
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin', [
+            'only' => [
+                'autoadm',
+                'dash',
+
+            ]
+        ]);
+    }
     public function inicio()
     {
         $Docs = Doc::all();
@@ -28,11 +38,12 @@ class PageController extends Controller
     public function schedule()
     {
         /*$Appointments=Appointment::with('dateTime')->get();*/
-        $Appointments=Appointment::with('dateTime','vet','user','state')->get();
-        $DateTimes = DateTime::with('time','date','appointment')->get();
-        $Specialties=Specialty::with('vet');
+        $Appointments=Appointment::with('dateTimes.date','vet.user','state')->get();
+        // $DateTimes = DateTime::with('time','date','appointments')->get();
+        // $Specialties=Specialty::with('vet');
 
-        return view('pagesystem.system.onepage.schedule', compact('Appointments','Specialties','DateTimes'));
+        // return view('pagesystem.system.onepage.schedule', compact('Appointments','Specialties','DateTimes'));
+        return view('pagesystem.system.onepage.schedule', compact('Appointments'));
 
     }
     public function about()

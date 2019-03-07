@@ -8,7 +8,7 @@
                         <div class="top">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div id="colorlib-logo"><a href="index.html"><img src="{{asset('vetportugal/images/logo1.png')}}" alt=""></a></div>
+                                    <div id="colorlib-logo"><a href="/"><img src="{{asset('vetportugal/images/logo1.png')}}" alt=""></a></div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="num">
@@ -33,7 +33,7 @@
                         <div class="col-md-8">
                             <div class="menu-1">
                                 <ul>
-                                    <li class="active"><a href="{{url('/index')}}">Home</a></li>
+                                    <li class="active"><a href="{{url('/')}}">Home</a></li>
                                     <li><a href="#colorlib-services">Servicios</a></li>
                                     <li><a href="#colorlib-doctor">Doctores</a></li>
                                     <!--li><a href="#colorlib-testimonial">Testimonios</a></li-->

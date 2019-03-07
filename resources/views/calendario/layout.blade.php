@@ -20,7 +20,7 @@
 </head>
 <body style="display: none" class="animated fadeIn">
   <div class="d-flex toggled" id="wrapper">
-    
+
     <!-- Sidebar -->
     <div class="bg-dark" id="sidebar-wrapper">
         <div class="list-group list-group-flush">
@@ -55,7 +55,7 @@
                 </li>
               </ul> --}}
           </div>
-        </nav>  
+        </nav>
         <div class="container mt-5">
             @yield('content')
         </div>
@@ -75,8 +75,6 @@
 {{--FullCalendar--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/es.js"></script>
-{{-- Chartjs --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 
 @yield('scripts')
 </html>

@@ -32,12 +32,10 @@
                     <h3>Useful Links</h3>
                     <p>
                         <ul class="colorlib-footer-links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Especialidades</a></li>
-                            <li><a href="#">Doctores</a></li>
-                            <li><a href="#">Servicios</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><a href="{{url('/')}}">Home</a></li>
+                            <li><a href="{{url('/scheduled')}}">Reserva</a></li>
+                            <li><a href="{{url('/about')}}">Nosotros</a></li>
+                            <li><a href="{{url('/contact')}}">Contacto</a></li>
                         </ul>
                     </p>
                 </div>
@@ -79,7 +77,7 @@
         </div>
     </div>
     <div class="row copyright">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12">
             <p>
                 <small class="block">&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;<script>document.write(new Date().getFullYear());</script> Derechos reservados | Página realizada por <a href="https://redpandachile.com" target="_blank">Redpanda</a>

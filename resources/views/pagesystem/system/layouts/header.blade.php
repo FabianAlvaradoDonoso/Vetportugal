@@ -42,7 +42,9 @@
 	<link rel="stylesheet" href="{{asset('vetportugal/css/style.css')}}">
 
 	<!-- Modernizr JS -->
-	<script src="{{asset('vetportugal/js/modernizr-2.6.2.min.js')}}"></script>
+    <script src="{{asset('vetportugal/js/modernizr-2.6.2.min.js')}}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
