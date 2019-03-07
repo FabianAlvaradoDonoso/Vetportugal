@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use App\Date;
 use App\Time;
 use App\Appointment;
@@ -13,20 +12,15 @@ class DateTime extends Model
     {
         return $this->belongsTo(Time::class);
     }
-
     public function date()
     {
         return $this->belongsTo(Date::class);
     }
-
-    public function appointment()
+    public function appointments()
     {
         return $this->hasMany(Appointment::class);
     }
-    
-    public function vet()
-    {
-        return $this->hasMany(Vet::class);
-    }
-
+    protected $fillable = [
+        'date_id', 'time_id'
+    ];
 }

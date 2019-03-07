@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aplicación web para la gestion de Reserva de Horas de la Veterinaria Portugal">
-    <meta name="keyword" content="Vetportugal, veterinario, mascotas, cuidadoresponsable">
-    <link href="veticon.ico" rel="icon">
-    <title>Reserva de Horas</title>
-
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Agenda VetPortugal</title>
     {{--BootstrapCSS--}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     {{--Fontawesome--}}
@@ -17,67 +14,55 @@
     <link rel="stylesheet" href="{{asset('calendario/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('calendario/css/simple-sidebar.css')}}">
 
-
     {{-- Versión para imprimir? --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css"> --}}
 
-    <style>
-        .fc-header-toolbar {
-            text-transform: capitalize
-        }
-    </style>
-
 </head>
 <body style="display: none" class="animated fadeIn">
-    <div class="d-flex toggled" id="wrapper">
-        <!-- Sidebar -->
-        <div class="bg-dark" id="sidebar-wrapper">
-          <div class="sidebar-heading text-white text-center">VetPortugapp</div>
-          <div class="list-group list-group-flush">
-            <a href="{{ route('appointments.index') }}" class="list-group-item list-group-item-action bg-dark text-white">Inicio</a>
-            <a href="{{ route('appointments.calendar') }}" class="list-group-item list-group-item-action bg-dark text-white">Calendario</a>
-          </div>
+  <div class="d-flex toggled" id="wrapper">
+    
+    <!-- Sidebar -->
+    <div class="bg-dark" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+          <a href="{{ route('appointments.index') }}" class="list-group-item list-group-item-action bg-dark text-white"><i class="fas fa-home mr-1"></i>Inicio</a>
+          <a href=" {{ route('appointments.gestionHoras')}} " class="list-group-item list-group-item-action bg-dark text-white"><i class="fa fa-calendar-alt mr-1"></i>Gestión de Horas</a>
         </div>
-        <!-- /#sidebar-wrapper -->
+      </div>
+      <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-            <button class="btn btn-primary" id="menu-toggle"></button>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="far fa-bell"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <button class="btn btn-primary" id="menu-toggle"><i class="fas fa-angle-double-right"></i></button>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="sidebar-heading ml-3 text-white text-center">
+            <a href="index.html" class="logo">VET <span class="lite">PORTUGAL</span></a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {{-- <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-bell"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
                   </div>
                 </li>
-              </ul>
-            </div>
-          </nav>
-          <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              </ol>
-          </nav>
-          <div class="container">
-              @yield('content')
+              </ul> --}}
           </div>
+        </nav>  
+        <div class="container mt-5">
+            @yield('content')
         </div>
-        <!-- /#page-content-wrapper -->
       </div>
-      <!-- /#wrapper -->
+      <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
 </body>
 {{--Jquery--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

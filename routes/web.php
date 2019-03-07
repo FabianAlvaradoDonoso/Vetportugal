@@ -74,8 +74,16 @@ Route::group( ['middleware' => 'auth' ], function() {
     Route::get('/dash','PageController@dash')->name('dash');
 
     //Sistema de reserva de horas
-    Route::get('/appoint', 'AppointmentController@calendar');
-    Route::get('/appointments/calendar', 'AppointmentController@calendar')->name('appointments.calendar');
+    Route::get('/appointments/horas', 'AppointmentController@gestionHoras')->name('appointments.gestionHoras');
+    Route::get('/appointments', 'AppointmentController@index')->name('appointments.calendar');
+    Route::get('/appointments/getApptsByVet/{vet}', 'AppointmentController@getApptsByVet');
+    Route::get('/appointments/addAppointmentsByVet/{vet}/{fecha}/{hora}', 'AppointmentController@addAppointmentsByVet');
+    Route::get('/appointments/getspecialties', 'AppointmentController@getspecialties');
+    Route::get('/appointments/getFechasByVet/{vet}', 'AppointmentController@getFechasByVet');
+    Route::get('/appointments/getVetByEsp/{esp}', 'AppointmentController@getVetByEsp');
+    Route::get('/appointments/getHorasByVetFecha/{fecha}/{vet}', 'AppointmentController@getHorasByVetFecha');
+    Route::get('/appointments/getVetPhoneNumber/{vet}', 'AppointmentController@getVetPhoneNumber');
+    Route::post('/appointments/arrayAppointments', 'AppointmentController@arrayAppointments');
     Route::resource('appointments', 'AppointmentController');
 });
 

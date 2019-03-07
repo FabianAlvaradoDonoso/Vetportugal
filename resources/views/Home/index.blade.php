@@ -20,7 +20,7 @@
             </a>
         </div>
         <div data-bs-parallax-bg="true" id="izq" style="background-image: url(home/assets/img/izq2.png);background-color: rgb(140,119,6);">
-            <a class="text-center d-flex justify-content-center align-items-center" href="/appoint" data-bs-hover-animate="pulse" id="link" style="display: block;height: 100%;">
+            <a class="text-center d-flex justify-content-center align-items-center" href="/appointments" data-bs-hover-animate="pulse" id="link" style="display: block;height: 100%;">
                 <span>Reserva de Hora</span>
             </a>
         </div>
