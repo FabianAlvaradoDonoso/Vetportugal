@@ -8,6 +8,10 @@ use PDF;
 
 class TypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function generatePDF()
     {
         $types = Type::all();

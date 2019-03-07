@@ -44,11 +44,9 @@
   <div class="page-404">
     <p class="text-404">Ops!</p>
 
-    <h2>En Construcción!</h2>
-    <p>Aun estamos trabajando en esta parte.
-        <br>Todos queremos descansar en Navidad y Año Nuevo.
-        <br>Pronto lo tendremos listo para ti, por mientras te dejo un video asombroso.
-        <br><a href="https://www.youtube.com/watch?v=T-Jkh5XDFC8" target="_blank">Awesome Video</a></p>
+    <h2>Ruta Equivocada!</h2>
+    <p>Verifique que la ruta este bien escrita.
+        <br>Si el error continua, contacte con el administrador.
   </div>
 
 

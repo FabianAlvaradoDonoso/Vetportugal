@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('vet');
+    }
     /**
      * Display a listing of the resource.
      *

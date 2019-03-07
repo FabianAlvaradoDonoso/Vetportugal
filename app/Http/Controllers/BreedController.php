@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class BreedController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function getBreeds(Request $request, $id){
         if($request->ajax()){
             $breeds = Breed::breeds($id);

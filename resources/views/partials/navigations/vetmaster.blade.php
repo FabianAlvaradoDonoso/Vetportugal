@@ -1,39 +1,9 @@
-{{-- <li class="active">
-    <a class="" href="index.html">
-        <i class="icon_house_alt"></i>
-        <span>Inicio</span>
-    </a>
-</li>
-
-<!-- CLIENTES -->
-
-<li class="sub-menu">
-    <a class="" href="{{route('client.index')}}">
-        <i class="fa fa-user"></i>
-        <span>Cliente</span>
-    </a>
-
-</li>
-<li>
-    <a class="" href="vacunas.html">
-        <i class="fas fa-syringe"></i>
-        <span>Vacunas</span>
-    </a>
-</li>
-<li>
-    <a class="" href="pacientes.html">
-        <i class="fas fa-paw"></i>
-        <span>Pacientes</span>
-    </a>
-</li> --}}
 <li class="">
-    <a class="" href="{{url('/home')}}">
+    <a class="" href="{{url('/clinica')}}">
         <i class="icon_house_alt"></i>
         <span>Inicio</span>
     </a>
 </li>
-
-<!-- CLIENTES -->
 
 <li class="sub-menu">
     <a class="" href="{{route('client.index')}}">
@@ -42,10 +12,6 @@
     </a>
 
 </li>
-
-
-
-<!-- pacientes -->
 
 <li class="sub-menu">
     <a class="" href={{route('pet.index')}}>
@@ -55,20 +21,20 @@
 
 </li>
 
-<!-- Personal -->
-
 <li class="sub-menu">
     <a class="" href={{route('schedule.index')}}>
         <i class="fas fa-syringe"></i>
         <span>Citas Vacunación</span>
     </a>
 </li>
+
 <li class="sub-menu">
     <a class="" href={{route('control.index')}}>
         <i class="fa fa-calendar-alt"></i>
         <span>Controles</span>
     </a>
 </li>
+
 <li class="sub-menu">
     <a class="" href={{route('exampet.index')}}>
         <i class="fas fa-diagnoses"></i>

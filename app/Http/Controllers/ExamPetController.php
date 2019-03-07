@@ -10,6 +10,10 @@ use App\Pet;
 
 class ExamPetController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('vet');
+    }
     /**
      * Display a listing of the resource.
      *

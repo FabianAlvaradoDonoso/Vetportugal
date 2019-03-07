@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class ControlController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('vet');
+    }
     /**
      * Display a listing of the resource.
      *

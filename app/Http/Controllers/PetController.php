@@ -19,7 +19,7 @@ class PetController extends Controller
 
     public function __construct()
     {
-        setlocale(LC_TIME, 'Spanish');
+        $this->middleware('vet');
     }
 
     public function index()

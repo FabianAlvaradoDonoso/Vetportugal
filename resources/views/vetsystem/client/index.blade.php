@@ -27,7 +27,7 @@
             <div class="col-lg-12">
                 <h3 class="page-header"><i class="fa fa-user"></i> Cliente <tab><a class="btn btn-primary "  href="{{route('client.create')}}" ><span class="fas fa-plus"></span>  Agregar</a></tab></h3>
                 <ol class="breadcrumb">
-                    <li><i class="fa fa-home"></i><a href="{{route('home')}}">Inicio</a></li>
+                    <li><i class="fa fa-home"></i><a href="{{route('clinica')}}">Inicio</a></li>
                     <li><i class="fa fa-user"></i>Cliente</li>
                 </ol>
             </div>

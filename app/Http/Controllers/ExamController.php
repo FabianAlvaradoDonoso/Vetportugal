@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
+use Auth;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +67,7 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        //
+        dd(Auth::user());
     }
 
     /**
