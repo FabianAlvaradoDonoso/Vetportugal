@@ -74,6 +74,7 @@ Route::group( ['middleware' => 'auth' ], function() {
     Route::resource('Carousel', 'CarouselController');
     Route::resource('Sucursal', 'SucursalController');
     Route::resource('Service', 'ServiceController');
+    Route::resource('Abouts', 'AboutController');
 
     // Ruta Dashboard
     Route::get('/dash','PageController@dash')->name('dash');

@@ -36,17 +36,25 @@ class CarouselController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCarouselRequest $request)
+    public function store(Request $request)
     {
+        $this->validate($request,[
+            'name'       => 'required',
+            'subtitle'   => 'required',
+            'btntitle'   => 'required',
+            'linkbtn'   => 'required',
+            'imagen'   => 'required',
+        ]);
+
         $Carousels = new Carousel();
         if($request->hasFile('imagen')){
             $file = $request->file('imagen');
             $name = time().$file->getClientOriginalName();
             $file->move(public_path().'/vetportugal/images/', $name);
-          
+
         }
-        
-        $Carousels->imagen = $name; 
+
+        $Carousels->imagen = $name;
         $Carousels->subtitle = $request->input('subtitle');
         $Carousels->name = $request->input('name');
         $Carousels->active = $request->input('subtitle');
@@ -79,7 +87,7 @@ class CarouselController extends Controller
      */
     public function edit(Carousel $Carousel)
     {
-        return view('pagesystem.Carousel.edit', compact('Carousel'));         
+        return view('pagesystem.Carousel.edit', compact('Carousel'));
     }
 
     /**
@@ -91,7 +99,15 @@ class CarouselController extends Controller
      */
     public function update(Request $request, Carousel $Carousel)
     {
-        $Carousel->fill($request->except('imagen'));       
+        $this->validate($request,[
+            'name'       => 'required',
+            'subtitle'   => 'required',
+            'btntitle'   => 'required',
+            'linkbtn'   => 'required',
+            // 'imagen'   => 'required',
+        ]);
+
+        $Carousel->fill($request->except('imagen'));
         if($request->hasFile('imagen')){
             $file = $request->file('imagen');
             $name = time().$file->getClientOriginalName();
@@ -100,7 +116,7 @@ class CarouselController extends Controller
         }
         $Carousel->save();
         return redirect()->route('Carousel.index')->with('success','Actualización exitosa.');
-        
+
     }
 
     /**
@@ -115,6 +131,6 @@ class CarouselController extends Controller
         \File::delete($file_path);
         $Carousel->delete();
         return redirect()->route('Carousel.index')->with('success','Eliminación exitosa.');
-        
+
     }
 }

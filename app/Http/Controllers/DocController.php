@@ -36,8 +36,15 @@ class DocController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDocRequest $request)
+    public function store(Request $request)
     {
+        $this->validate($request,[
+            'name'       => 'required',
+            'specialty'   => 'required',
+            'description'   => 'required',
+            'imagen'   => 'required',
+        ]);
+
         $Doc = new Doc();
         if($request->hasFile('imagen')){
             $file = $request->file('imagen');
@@ -88,6 +95,12 @@ class DocController extends Controller
      */
     public function update(Request $request, Doc $Doc)
     {
+        $this->validate($request,[
+            'name'       => 'required',
+            'specialty'   => 'required',
+            'description'   => 'required',
+            // 'imagen'   => 'required',
+        ]);
 
         $Doc->fill($request->except('imagen'));
         if($request->hasFile('imagen')){

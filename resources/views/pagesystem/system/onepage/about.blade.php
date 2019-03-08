@@ -9,7 +9,7 @@
             <div class="col-md-6 col-md-pull-6 animate-box">
                 <h2>Acerca de nosotros</h2>
                 <p>
-                    Vetportugal es medicina de alto estándar para las mascotas de hoy. Sabemos que son parte importante de nuestra familia y nuestras actividades diarias, es por eso que queremos estar junto a ustedes. Contamos con profesionales de excelencia y en constante actualización, exámenes complementarios de alto valor diagnóstico. Ven a conocernos!.
+                    {{$about->description}}
                 </p>
                     <div class="fancy-collapse-panel">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -24,10 +24,10 @@
                          <div class="panel-body">
                              <div class="row">
                                           <div class="col-md-6">
-                                              <p>Lorem ipsum dolor sit cuchuflí barquillo bacán jote gamba listeilor po cahuín, luca melón con vino pichanga coscacho ni ahí peinar la muñeca chuchada al chancho achoclonar. Chorrocientos pituto ubicatex huevo duro bolsero cachureo el hoyo del queque en cana huevón el año del loly hacerla corta impeque de miedo quilterry la raja longi ñecla. Hilo curado rayuela carrete quina guagua lorea piola ni ahí. </p>
+                                              <p>{{$about2[0]}}</p>
                                           </div>
                                           <div class="col-md-6">
-                                              <p>Lorem ipsum dolor sit cuchuflí barquillo bacán jote gamba listeilor po cahuín, luca melón con vino pichanga coscacho ni ahí peinar la muñeca chuchada al chancho achoclonar. Chorrocientos pituto ubicatex huevo duro bolsero cachureo el hoyo del queque en cana huevón el año del loly hacerla corta impeque de miedo quilterry la raja longi ñecla. Hilo curado rayuela carrete quina guagua lorea piola ni ahí.</p>
+                                              <p>{{$about2[1]}}</p>
                                           </div>
                                       </div>
                          </div>
@@ -42,11 +42,7 @@
                      </div>
                      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                          <div class="panel-body">
-                             <p>Lorem ipsum dolor sit cuchuflí barquillo bacán jote gamba listeilor po cahuín, luca melón con vino pichanga coscacho ni ahí peinar la muñeca chuchada al chancho achoclonar. Chorrocientos pituto ubicatex huevo duro bolsero cachureo el hoyo del queque en cana huevón el año del loly hacerla corta impeque de miedo quilterry <strong>la raja</strong>  longi ñecla. Hilo curado rayuela carrete quina guagua lorea piola ni ahí.</p>
-                                        <ul>
-                                            <li>Separated they live in Bookmarksgrove right</li>
-                                            <li>Separated they live in Bookmarksgrove right</li>
-                                        </ul>
+                            <p>{{$about->vision}}</p>
                          </div>
                      </div>
                  </div>
@@ -59,7 +55,7 @@
                      </div>
                      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                          <div class="panel-body">
-                             <p>Far far away, behind the word <strong>mountains</strong>, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                            <p>{{$about->choose}}</p>
                          </div>
                      </div>
                  </div>

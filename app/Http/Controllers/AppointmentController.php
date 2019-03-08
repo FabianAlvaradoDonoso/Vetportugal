@@ -24,12 +24,6 @@ class AppointmentController extends Controller
     {
         $this->middleware('admin');
     }
-
-    public function prueba(){
-        $appts = DatetimeModel::with('time')->whereIn('id', $idsDateTimes)->get();
-        dd($appts);
-        return $appts;
-    }
     /**
      * Display a listing of the resource.
      *

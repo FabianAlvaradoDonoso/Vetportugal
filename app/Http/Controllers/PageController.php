@@ -13,6 +13,7 @@ use App\Appointment;
 use App\Date;
 use App\Time;
 use App\DateTime;
+use App\About;
 class PageController extends Controller
 {
     public function __construct()
@@ -48,7 +49,9 @@ class PageController extends Controller
     }
     public function about()
     {
-        return view('pagesystem.system.onepage.about');
+        $about = About::all()->first();
+        $about2 = explode('<br>',wordwrap($about->mission, (strlen($about->mission))/2, "<br>", false));
+        return view('pagesystem.system.onepage.about', compact('about', 'about2'));
     }
     public function contact()
     {

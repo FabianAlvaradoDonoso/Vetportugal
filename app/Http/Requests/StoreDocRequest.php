@@ -24,9 +24,10 @@ class StoreDocRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required', 
+            'name' => 'required',
             'imagen' => 'required',
-            'specialty'=>'required'
+            'specialty'=>'required',
+            'description'=>'required',
         ];
     }
 }

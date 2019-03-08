@@ -27,7 +27,7 @@
             {{-- @endif --}}
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li><a href="{{route('dash')}}"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Servicios</li>
         </ol>
 
@@ -39,6 +39,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Listado Servicios</h3>
             </div>
+
             <div class="box-body">
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-dismissible" id="alert">
@@ -49,40 +50,30 @@
                 @endif
                 <div class="colorlib-departments">
                     <div class="container">
-                            <div class="row">
+                        <div class="row">
+                            @foreach ($Services as $Service)
+                                <div class="col-md-3 col-sm-6 col-xs-12 animate-box text-center">
+                                    <div class="doctor">
+                                        <div class="" style="">
+                                            <img id="showImg" name="showImg" style="height: 150px; width: 150px;" src="/vetportugal/images/{{$Service->imagen}}" alt="Card image cap" class="">
+                                        </div>
+                                        <div class="desc">
+                                            <span>{{$Service->description}}</span>
+                                            <h3>{{$Service->name}}</h3>
 
-                                    @foreach ($Services as $Service)
-                                    <div class="col-md-4">
-                                        <div class="department-wrap animate-box">
-                                        <div class="grid-1 col-md-6" style="background-image: url(vetportugal/images/{{$Service->imagen}});"></div>
-                                            <div class="grid-2 col-md-6">
-                                                <div class="desc">
-                                                    <h2><a href="departments-single.html">{{$Service->name}}</a></h2>
-                                                    <p>{{$Service->description}}</p>
-                                                    <div class="department-info">
-                                                        <div class="block">
-                                                            <h2><a href="doctors-single.html">Paul Merriweather</a></h2>
-                                                            <span>{{$Service->price}}</span>
-                                                        </div>
-                                                        <div class="block">
-                                                            <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Service.edit', $Service->slug)}}">Editar</a></p>
-                                                            {!! Form::open([ 'route' => ['Service.destroy', $Service->slug], 'method'=>'DELETE'])!!}
-                                                               {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm'])!!}
-                                                           {!! Form::close()!!}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <a href="{{route('Service.edit', $Service->slug)}}" class="btn btn-success "> Editar</a>
+                                            <a class="btn btn-danger" href="" onclick="event.preventDefault(); document.getElementById('delete-form-{{$Service->slug}}').submit();" > Eliminar</a>
+                                            <form id="delete-form-{{$Service->slug}}" action="{{route('Service.destroy', $Service->slug)}}" method="POST" style="display: none;">
+                                                @csrf
+                                                {{method_field('DELETE')}}
+                                            </form>
                                         </div>
                                     </div>
-
-                                    @endforeach
-
                                 </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>

@@ -209,7 +209,7 @@
         </li> --}}
         <li>
             <a href="{{url('/Carousel')}}">
-                <i class="fa fa-archive"></i> <span>Carousel</span>
+                <i class="fa fa-picture-o"></i> <span>Carousel</span>
             </a>
         </li>
         <li>
@@ -219,12 +219,12 @@
         </li>
         <li>
             <a href="{{url('/Service')}}">
-                <i class="fa fa-archive"></i> <span>Services</span>
+                <i class="fa fa-heartbeat"></i> <span>Servicios</span>
             </a>
         </li>
         <li>
-            <a href="">
-                <i class="fa fa-archive"></i> <span>About Us</span>
+            <a href="{{url('/Abouts')}}">
+                <i class="fa fa-info"></i> <span>Nosotros</span>
             </a>
         </li>
         <li>
@@ -232,8 +232,8 @@
                 <i class="fa fa-archive"></i> <span>Especialidades</span>
             </a>
         </li>
-        <li class="header">OTROS</li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        {{-- <li class="header">OTROS</li>
+        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li> --}}
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -255,7 +255,7 @@
     </footer>
 
   <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
+    {{-- <aside class="control-sidebar control-sidebar-dark">
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
         </ul>
@@ -265,7 +265,7 @@
             <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
         </div>
     </aside>
-    <div class="control-sidebar-bg"></div>
+    <div class="control-sidebar-bg"></div> --}}
 </div>
 <!-- ./wrapper -->
 

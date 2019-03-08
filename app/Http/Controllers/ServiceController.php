@@ -35,8 +35,15 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request)
+    public function store(Request $request)
     {
+        $this->validate($request,[
+            'name'       => 'required',
+            'price'   => 'required',
+            'description'   => 'required',
+            'imagen'   => 'required',
+        ]);
+
         $Service = new Service();
         if($request->hasFile('imagen'))
         {
@@ -76,7 +83,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $Service)
     {
-       
+
        return view('pagesystem.Service.edit', compact('Service'));
     }
 
@@ -89,6 +96,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $Service)
     {
+        $this->validate($request,[
+            'name'       => 'required',
+            'price'   => 'required',
+            'description'   => 'required',
+            // 'imagen'   => 'required',
+        ]);
+
         $Service->fill($request->except('imagen'));
         if($request->hasFile('imagen')){
             $file = $request->file('imagen');

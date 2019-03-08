@@ -58,8 +58,8 @@
                                 <h3>Dr. {{$Doc->name}}</h3>
 
                                 <a href="{{route('Docs.edit', $Doc->slug)}}" class="btn btn-success "> Editar</a>
-                                <a class="btn btn-danger" href="" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" > Eliminar</a>
-                                <form id="delete-form" action="{{route('Docs.destroy', $Doc->slug)}}" method="POST" style="display: none;">
+                                <a class="btn btn-danger" href="" onclick="event.preventDefault(); document.getElementById('delete-form-{{$Doc->slug}}').submit();" > Eliminar</a>
+                                <form id="delete-form-{{$Doc->slug}}" action="{{route('Docs.destroy', $Doc->slug)}}" method="POST" style="display: none;">
                                     @csrf
                                     {{method_field('DELETE')}}
                                 </form>

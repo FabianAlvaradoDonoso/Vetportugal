@@ -104,6 +104,7 @@ class DatabaseSeeder extends Seeder
 
         factory(\App\DateTime::class, 10)->create();
         factory(\App\Appointment::class, 20)->create();
+        factory(\App\About::class, 1)->create();
 
 
     }
