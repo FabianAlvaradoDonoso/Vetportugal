@@ -34,7 +34,7 @@
                         <div class="col-md-12">
                             <div class="menu-1">
                                 <ul>
-                                    <li><img src="/vetportugal/images/user.png" id="minilogo" class="minilogo"></li>
+                                    <li><img src="/vetportugal/images/minilogo2.png" id="minilogo" class="minilogo"></li>
                                     <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a href="{{url('/')}}">Home</a></li>
                                     <li class="has-dropdown nav-item {{ request()->is('#colorlib-services') ? 'active' : '' }}">
                                         <a href="servicios">Servicios</a></li>
@@ -43,6 +43,9 @@
                                     <!--li><a href="#colorlib-testimonial">Testimonios</a></li-->
                                     <li class="has-dropdown nav-item {{ request()->is('departments') ? 'active' : '' }}">
                                         <a href="{{url('/departments')}}">Departamentos</a>
+                                        <li class="has-dropdown nav-item {{ request()->is('departments') ? 'active' : '' }}">
+                                    <li class="has-dropdown nav-item {{ request()->is('scheduled') ? 'active' : '' }}">
+                                        <a href="{{url('/scheduled')}}">Reservar</a>    
                                        <!-- <ul class="dropdown">
                                             <li><a href="{{url('/surgery')}}">Cirugia</a></li>
                                             <li><a href="{{url('/laboratory')}}">Laboratorio</a></li>

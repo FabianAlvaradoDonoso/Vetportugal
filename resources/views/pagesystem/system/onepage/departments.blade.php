@@ -2,33 +2,42 @@
 
 @section('content')
 
+
 <div class="colorlib-doctor">
 		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+					<h2>Servicios</h2>
+					<p>Medicina integral para mascotas</p>
+				</div>
+			</div>
 			<div class="row">
-				<div class="col-md-12 col-md-push-4 image-content">
-					<div class="doctor animate-box">
-						<img class="img-responsive doc-img" src="/vetportugal/images/{{$Services->imagen}}" alt="">
-						<h2><a href="doctors-single.html">{{$Services->name}}</a></h2>
-						<span>Dental Hygienist</span>
-						<div class="desc2">
-							<p>{{$Services->resumen}}</p>
-							<blockquote>
-									{{$Services->description}}
-							</blockquote>
-
-							<h3>Connect us here!</h3>
-								<ul class="colorlib-social">
-								<li><a href="#"><i class="icon-facebook2"></i></a></li>
-								<li><a href="#"><i class="icon-twitter2"></i></a></li>
-								<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-								<li><a href="#"><i class="icon-instagram"></i></a></li>
-							</ul>
+				<div class="col-md-12 animate-box">
+					<div class="row row-pb-lg">
+						<div class="owl-carousel2">
+							@foreach ($Services as $Service)
+							<div class="item">
+									<div class="col-md-6">
+										<div class="doctor-desc">
+											<h3><a href="#">{{$Service->name}}</a></h3>
+											<span class="specialty"></span>
+											<p>{{$Service->resumen}}.</p>
+											<p>{{$Service->description}}</p>
+											<p><a href="mailto:contacto@vetportugal.cl" class="btn btn-primary">Mail</a> <a href="scheduled" class="btn btn-primary btn-outline">Reservar</a></p>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="doctor-img" style="background-image: url(vetportugal/images/{{$Service->imagen}});">
+										</div>
+									</div>
+								</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 
 @endsection
 
