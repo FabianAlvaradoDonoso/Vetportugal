@@ -19,25 +19,25 @@
                     <h3>Especialidades</h3>
                     <p>
                         <ul class="colorlib-footer-links">
-                            <li><a href="#">Neurología</a></li>
-                            <li><a href="#">Traumatología</a></li>
-                            <li><a href="#">Odontología</a></li>
-                            <li><a href="#">Nefrología</a></li>
-                            <li><a href="#">Cardiología</a></li>
-                            <li><a href="#">Peluquería</a></li>
+                            <li><a href="scheduled">Neurología</a></li>
+                            <li><a href="scheduled">Traumatología</a></li>
+                            <li><a href="scheduled">Odontología</a></li>
+                            <li><a href="scheduled">Nefrología</a></li>
+                            <li><a href="scheduled">Cardiología</a></li>
+                            <li><a href="scheduled">Peluquería</a></li>
                         </ul>
                     </p>
                 </div>
                 <div class="col-md-2 colorlib-widget">
-                    <h3>Useful Links</h3>
+                    <h3>Enlaces</h3>
                     <p>
                         <ul class="colorlib-footer-links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Especialidades</a></li>
-                            <li><a href="#">Doctores</a></li>
-                            <li><a href="#">Servicios</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="servicios">Servicios</a></li>
+                            <li><a href="doctores">Doctores</a></li>
+                            <li><a href="departments">Departamentos</a></li>
+                            <li><a href="scheduled">Reserva</a></li>
+                            <li><a href="about">Nosotros</a></li>
                         </ul>
                     </p>
                 </div>
@@ -56,26 +56,17 @@
                     </p>
                 </div>-->
 
-            <div class="col-md-3 colorlib-widget">
-                <h3>Contáctenos</h3>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name" class="sr-only">Nombre</label>
-                        <input type="name" class="form-control" id="name" placeholder="Name">
+                <div class="col-md-3">
+                        <div class="colorlib-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.768337291498!2d-70.63567708509139!3d-33.455341605148654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c565603f41ad%3A0xf1a06253bd5d99f5!2sVetPortugal-Centro+Veterinario+Integral!5e0!3m2!1ses!2scl!4v1552018017526" 
+                                width="400" 
+                                height="300" 
+                                frameborder="0" 
+                                style="border:0" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="sr-only">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="sr-only">Mensaje</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" id="btn-submit" class="btn btn-primary btn-send-message btn-md" value="Enviar Mensaje">
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
     <div class="row copyright">
@@ -94,7 +85,24 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 </div>
-
+<script type="text/javascript">
+    (function () {
+        var options = {
+            facebook: "1560920454191274", // Facebook page ID
+            email: "contacto@vetportugal.cl",
+            whatsapp: "+56987361579", // WhatsApp number
+            call: "+56222226819", // Call phone number 
+            call_to_action: "Message us", // Call to action
+            button_color: "#09b3ca",
+            position: "right", // 'right' or 'left'
+            order: "email,facebook,whatsapp,call", 
+        };
+        var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
 
 <!-- jQuery -->
 <script src="{{asset('vetportugal/js/jquery.min.js')}}"></script>

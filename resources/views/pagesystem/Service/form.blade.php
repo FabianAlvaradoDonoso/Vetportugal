@@ -3,16 +3,12 @@
     {!! Form::text('name', null, ['class'=> 'form-control'])!!}
 </div>
 <div class="form-group">
+    {!! Form::label('resumen', 'Resumen')!!}
+    {!! Form::text('resumen', null, ['class'=> 'form-control'])!!}
+</div>
+<div class="form-group">
     {!! Form::label('description', 'Descripción')!!}
-    {!! Form::text('description', null, ['class'=> 'form-control'])!!}
-</div>
-<div class="form-group">
-    {!! Form::label('price', 'Precio')!!}
-    {!! Form::text('price', null, ['class'=> 'form-control'])!!}
-</div>
-<div class="form-group">
-    {!! Form::label('price', 'Precio')!!}
-    {!! Form::textarea('price', null, ['class'=> 'form-control'])!!}
+    {!! Form::textarea('description', null, ['class'=> 'form-control'])!!}
 </div>
 <div class="form-group">
     {!! Form::label('imagen', 'Imagen')!!}

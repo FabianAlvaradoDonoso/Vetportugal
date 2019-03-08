@@ -93,7 +93,13 @@ Route::get('/', 'PageController@inicio')->name('index');
 Route::get('/scheduled', 'PageController@schedule')->name('schedule');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contact')->name('contact');
-
+Route::get('/departments', 'PageController@departments')->name('departments');
+Route::get('servicios', function () {
+    return redirect('/#colorlib-services');
+});
+Route::get('doctores', function () {
+    return redirect('/#colorlib-doctor');
+});
 
 //Mail Contactenos
 

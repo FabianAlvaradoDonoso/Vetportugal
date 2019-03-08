@@ -48,8 +48,7 @@ class ServiceController extends Controller
 
         $Service->name = $request->input('name');
         $Service->description = $request->input('description');
-        $Service->active = $request->input('name');
-        $Service->price = $request->input('price');
+        $Service->resumen = $request->input('resumen');
         $Service->slug = time().$request->input('name');
 
         $Service->save();

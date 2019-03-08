@@ -20,9 +20,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->longtext('description');
             $table->string('resumen');
-            $table->string('imagen');
-            $table->string('active');
-            $table->integer('price');                        
+            $table->string('imagen');                        
         });
     }
 

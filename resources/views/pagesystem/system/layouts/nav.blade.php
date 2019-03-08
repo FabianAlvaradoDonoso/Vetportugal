@@ -36,18 +36,20 @@
                                 <ul>
                                     <li><img src="/vetportugal/images/user.png" id="minilogo" class="minilogo"></li>
                                     <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"><a href="{{url('/')}}">Home</a></li>
-                                    <li><a href="#colorlib-services">Servicios</a></li>
-                                    <li><a href="#colorlib-doctor">Doctores</a></li>
+                                    <li class="has-dropdown nav-item {{ request()->is('#colorlib-services') ? 'active' : '' }}">
+                                        <a href="servicios">Servicios</a></li>
+                                    <li class="has-dropdown nav-item {{ request()->is('#colorlib-doctor') ? 'active' : '' }}">
+                                        <a href="doctores">Doctores</a></li>
                                     <!--li><a href="#colorlib-testimonial">Testimonios</a></li-->
                                     <li class="has-dropdown nav-item {{ request()->is('departments') ? 'active' : '' }}">
                                         <a href="{{url('/departments')}}">Departamentos</a>
-                                        <ul class="dropdown">
-                                            <li><a href="{{url('/departments')}}">Cirugia</a></li>
-                                            <li><a href="{{url('/departments')}}">Odontología</a></li>
-                                            <li><a href="{{url('/departments')}}">Traumatología</a></li>
-                                        </ul>
+                                       <!-- <ul class="dropdown">
+                                            <li><a href="{{url('/surgery')}}">Cirugia</a></li>
+                                            <li><a href="{{url('/laboratory')}}">Laboratorio</a></li>
+                                            <li><a href="{{url('/hairdressing')}}">Peluquería</a></li>
+                                        </ul>-->
                                     </li>
-                                    <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}"><a href="{{url('/contact')}}">Contacto</a></li>
+                                    <li class="nav-item {{ request()->is('about') ? 'active' : '' }}"><a href="{{url('/about')}}">Nosotros</a></li>
                                 </ul>
                             </div>
                         </div>
