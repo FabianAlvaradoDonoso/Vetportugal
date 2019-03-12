@@ -48,9 +48,8 @@
                         <thead>
                             <tr>
                                 <th style="width: 20%">Nombre</th>
-                                <th style="width: 10%">Precio</th>
+                                <th style="width: 10%">resumen</th>
                                 <th style="width: 40%">Descripción</th>
-                                <th style="width: 20%">Categoría</th>
                                 <th style="width: 10%" class="text-center">Opciones</th>
                             </tr>
                         </thead>
