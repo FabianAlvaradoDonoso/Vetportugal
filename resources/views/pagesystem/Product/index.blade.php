@@ -1,5 +1,4 @@
-@extends('layouts.app2')
-
+@extends('pagesystem/layouts.app2')
 {{-- --------------------------------------------------------------------- --}}
 
 @section('name')
@@ -22,7 +21,7 @@
         <h1>
             Productos
             <small>Listado</small>
-            <a href="{{route('product.create')}}" class="btn btn-primary btn-sm">Nuevo Productos</a>
+            <a href="{{route('Product.create')}}" class="btn btn-primary btn-sm">Nuevo Productos</a>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -54,33 +53,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
-                                @foreach ($categories as $category)
-                                    @if ($category->id == $product->category_id)
+                            @foreach ($Products as $product)
                                         <tr>
                                             <td>{{$product->name}}</td>
-                                            <td class="text-right">${{number_format($product->price, 0, ',', '.')}}</td>
-                                            <td>{{str_limit($product->description, 50)}}</td>
-                                            <td>{{$category->name}}</td>
+                                            <td>{{$product->resumen}}</td>
+                                            <td>{{$product->description}}</td>
                                             <td class="text-center">
-                                                <a class="btn btn-success btn-sm mb-2" href="{{route('product.edit', $product->id)}}"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#smallmodal-{{$product->id}}"><i class="fa fa-trash-o"></i></button>
+                                            <p><a class="btn btn-success btn-sm btn-learn" href="{{route('Product.edit', $product->slug)}}">Editar</a></p>
+                                                {!! Form::open([ 'route' => ['Product.destroy', $product->slug], 'method'=>'DELETE'])!!}
+                                                    {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-sm mb-2'])!!}
+                                                    
+                                                {!! Form::close()!!}
                                             </td>
                                         </tr>
 
-                                        <div class="modal modal-danger fade" id="smallmodal-{{$product->id}}" style="display: none;">
+                                        <div class="modal modal-danger fade" id="smallmodal-{{$product->slug}}" style="display: none;">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span></button>
-                                                        <h4 class="modal-title">Danger Modal</h4>
+                                                        <h4 class="modal-title">Confirmación</h4>
                                                     </div>
                                                     <div class="modal-body">
                                                             <strong> Si presiona continuar los datos no podrán ser recuperados.</strong><br> ¿Esta seguro que desea eliminar {{($product->name)}}?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form class="" action="{{route('product.destroy', $product->id)}}" method="post">
+                                                        <form class="" action="{{route('Product.destroy', $product->slug)}}" method="post">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                                                             @csrf
                                                             {{method_field('DELETE')}}
@@ -92,8 +91,7 @@
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
-                                    @endif
-                                @endforeach
+                                
                             @endforeach
                         </tbody>
                     </table>
