@@ -25,7 +25,7 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Port
@@ -48,8 +48,8 @@ return [
     |
     */
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'agendamiento@vetportugal.cl'),
-        'name' => env('MAIL_FROM_NAME', 'Agendamiento'),
+        'address' => env('MAIL_FROM_ADDRESS', 'diegosepu.soto@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'diegosepu.soto'),
     ],
     /*
     |--------------------------------------------------------------------------
